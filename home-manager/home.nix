@@ -1,97 +1,95 @@
 { inputs, config, lib, pkgs, ... }:
 
 {  
-  
-  home.username = "chino";
-  home.homeDirectory = "/home/chino";
+    home.username = "chino";
+    home.homeDirectory = "/home/chino";
 
     
+    # This value determines the Home Manager release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
+    home.stateVersion = "23.11"; # Please read the comment before changing.
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    home.packages = [
+	pkgs.dconf
+	pkgs.syncthingtray
+    ];
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    pkgs.dconf
-    pkgs.syncthingtray
-  ];
+    imports = [
+	./waybar.nix
+	./sway.nix
+    ];
 
-  imports = [
-    ./waybar.nix
-    ./sway.nix
-  ];
+    # Home Manager is pretty good at managing dotfiles. The primary way to manage
+    # plain files is through 'home.file'.
+    home.file = {
+	# # Building this configuration will create a copy of 'dotfiles/screenrc' in
+	# # the Nix store. Activating the configuration will then make '~/.screenrc' a
+	# # symlink to the Nix store copy.
+	# ".screenrc".source = dotfiles/screenrc;
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+	# # You can also set the file content immediately.
+	# ".gradle/gradle.properties".text = ''
+	#   org.gradle.console=verbose
+	#   org.gradle.daemon.idletimeout=3600000
+	# '';
+    };
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
+    services.syncthing = {
+	enable = true;
+    };
 
-  services.syncthing = {
-    enable = true;
-  };
-
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    desktopEntries = {
-	obsidian = {
-	    name = "Obsidian";
-	    exec = "obsidian --ozone-platform-hint=auto";
-	};
-	nemo = {
-	    name = "Nemo";
-	    exec = "nemo";
-	};
-	gimp = {
-	    name = "GIMP";
-	    exec = "gimp";
+    xdg = {
+	enable = true;
+	mime.enable = true;
+	desktopEntries = {
+	    obsidian = {
+		name = "Obsidian";
+		exec = "obsidian --ozone-platform-hint=auto";
+	    };
+	    nemo = {
+		name = "Nemo";
+		exec = "nemo";
+	    };
+	    gimp = {
+		name = "GIMP";
+		exec = "gimp";
+	    };
 	};
     };
-  };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+    # Home Manager can also manage your environment variables through
+    # 'home.sessionVariables'. These will be explicitly sourced when using a
+    # shell provided by Home Manager. If you don't want to manage your shell
+    # through Home Manager then you have to manually source 'hm-session-vars.sh'
+    # located at either
+    #
+    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    #
+    # or
+    #
+    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+    #
+    # or
+    #
+    #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
+    #
+    home.sessionVariables = {
+	# EDITOR = "emacs";
+    };
 
-  home.activation = {
-    # https://github.com/philj56/tofi/issues/115#issuecomment-1701748297
-    regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-	tofi_cache=${config.xdg.cacheHome}/tofi-drun
-	[[ -f "$tofi_cache" ]] && rm "$tofi_cache"
-    '';
-  };
+    home.activation = {
+	# https://github.com/philj56/tofi/issues/115#issuecomment-1701748297
+	regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+	    tofi_cache=${config.xdg.cacheHome}/tofi-drun
+	    [[ -f "$tofi_cache" ]] && rm "$tofi_cache"
+	    '';
+    };
 
     gtk = {
 	enable = true;
@@ -110,17 +108,17 @@
 	gtk.enable = true;
     };
 
-  programs = {
+    programs = {
 	neovim = {
-		enable = true;
-		viAlias = true;
-		vimAlias = true;
-		plugins = with pkgs.vimPlugins; [
-				nvchad
-		];
-		extraConfig = "
-			set clipboard=unnamedplus
-			set shiftwidth=4
+	    enable = true;
+	    viAlias = true;
+	    vimAlias = true;
+	    plugins = with pkgs.vimPlugins; [
+		nvchad
+	    ];
+	    extraConfig = "
+		set clipboard=unnamedplus
+		set shiftwidth=4
 			";
 	};
 	git = {
@@ -133,22 +131,22 @@
 	    };
 	};
 	kitty = {
-		enable = true;
-		theme = "Catppuccin-Macchiato";
+	    enable = true;
+	    theme = "Catppuccin-Macchiato";
 	};
 	tofi = {
-		enable = true;
-		settings = {
-			font 		 = "Fira Code";
-			text-color       = "#cad3f5";
-			prompt-color     = "#7dc4e4";
-			prompt-text	 = "drun: ";
-			selection-color  = "#ed8796";
-			background-color = "#1e2030";
-			border-width	 = 4;
-			border-color	 = "#c6a0f6";
-			hide-cursor 	 = true;
-		};
+	    enable = true;
+	    settings = {
+		font 	     	 = "Fira Code";
+		text-color       = "#cad3f5";
+		prompt-color     = "#7dc4e4";
+		prompt-text	 = "drun: ";
+		selection-color  = "#ed8796";
+		background-color = "#1e2030";
+		border-width     = 4;
+		border-color     = "#c6a0f6";
+		hide-cursor      = true;
+	    };
 	};
     };
 }

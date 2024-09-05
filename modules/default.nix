@@ -25,11 +25,14 @@
     # Allow remote ssh / scp
     services.openssh = {
 	enable = true;
-	#TODO: require public key authentication for better security
-	settings.PasswordAuthentication = true;
+	settings.PasswordAuthentication = false;
 	settings.KbdInteractiveAuthentication = false;
 	#settings.PermitRootLogin = "yes";
     };
+
+    users.users.chino.openssh.authorizedKeys.keyFiles = [
+	./ssh/authorized_keys
+    ];
 
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -153,4 +156,10 @@
 	    };
 	};
     };
+
+    #fileSystems."/media/backup" = {
+    #	device = "god.lan:/media/backup";
+    #	fsType = "nfs";
+    #	options = [ "x-systemd.automount" "noauto" ];
+    #};
 }
