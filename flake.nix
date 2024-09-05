@@ -34,12 +34,20 @@
 	    };
 	};
 
-	homeManagerConfigurations = {
+	homeConfigurations = {
 	    michael = home-manager.lib.homeManagerConfiguration {
-		modules = [ ./hosts/michael/home.nix ];
+		pkgs = pkgs;
+		modules = [ 
+		    ./hosts/michael/home.nix 
+		    ./home-manager/home.nix 
+		];
 	    };
 	    gabriel = home-manager.lib.homeManagerConfiguration {
-		modules = [ ./hosts/gabriel/home.nix ];
+		pkgs = pkgs;
+		modules = [ 
+		    ./hosts/gabriel/home.nix 
+		    ./home-manager/home.nix
+		];
 	    };
 	};
     };
