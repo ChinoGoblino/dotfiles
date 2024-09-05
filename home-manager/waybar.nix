@@ -9,7 +9,7 @@
 		spacing = 4;
 		modules-left = ["sway/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
 		modules-center = ["sway/window"];
-		modules-right = ["pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray" "group/group-power"];
+		modules-right = ["pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray"];
 
 		"sway/window" = {
 		    format = "{title}";

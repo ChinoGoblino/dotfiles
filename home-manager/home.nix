@@ -15,9 +15,33 @@
     home.stateVersion = "23.11"; # Please read the comment before changing.
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    home.packages = [
-	pkgs.dconf
-	pkgs.syncthingtray
+    
+    nixpkgs.config.allowUnfree = true;
+
+    home.packages = with pkgs; [
+	dconf
+	syncthingtray
+	papirus-icon-theme
+	networkmanagerapplet
+	waybar
+	dunst
+	pasystray
+	trayer
+	tofi
+
+	htop
+	neofetch
+	mc
+	playerctl
+
+	xarchiver
+	nemo
+	obsidian #unfree
+	firefox
+	kitty
+	gimp
+	pwvucontrol
+	wireshark
     ];
 
     imports = [

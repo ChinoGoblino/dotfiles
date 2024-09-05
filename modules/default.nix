@@ -104,28 +104,16 @@
     environment.systemPackages = with pkgs; [
 	neovim
 	wget
-	neofetch
-	mc
 	git
-	nemo
-	kitty
-	firefox
-	obsidian
-	htop    
-	papirus-icon-theme
-	dunst
-	pasystray
-	trayer
-	playerctl
-	networkmanagerapplet
-	waybar
-	tofi
-	pwvucontrol
-	gimp
 	home-manager
-	xarchiver
 	wl-clipboard
 	unzip
+	
+	# traceroute, telnet
+	inetutils
+	# nslookup, dig
+	dnsutils
+	netperf
     ];
 
     fonts.packages = with pkgs; [
@@ -157,9 +145,4 @@
 	};
     };
 
-    #fileSystems."/media/backup" = {
-    #	device = "god.lan:/media/backup";
-    #	fsType = "nfs";
-    #	options = [ "x-systemd.automount" "noauto" ];
-    #};
 }
