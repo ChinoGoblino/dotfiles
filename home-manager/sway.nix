@@ -11,7 +11,6 @@
     config = {
     wayland.windowManager.sway = {
 	enable = true;
-	#checkConfig = false;
 	config.modifier = "Mod4";
 	config.floating.modifier = "Mod1";
 
@@ -48,8 +47,9 @@
 
 	config.keybindings = let mod = config.wayland.windowManager.sway.config.modifier;
 	in {
-	    "${mod}+Control+l" = "${pkgs.swaylock}"; 
-	    "${mod}+t" = ''exec ${pkgs.grim} -g "$(${pkgs.slurp})" ~/Desktop/screenshot-$(date +%s).png 2> /dev/null'';
+	    "${mod}+Control+l" = "swaylock"; 
+	    "${mod}+t" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+	    #"${mod}+t" = ''exec grim -g "$(slurp)" ~/Desktop/screenshot-$(date +%s).png 2> /dev/null'';
 	    "${mod}+x" = "exec kitty";
 	    "${mod}+m" = "exec mc";
 	    "${mod}+b" = "exec firefox";
@@ -144,6 +144,14 @@
 	    
 	    "${config.wayland.windowManager.sway.config.modifier}+d" = "mode default";
 	};
+	config.window.commands = [
+	    {
+		command = "split toggle";
+		criteria = {
+		    app_id=".*";
+		};
+	    }
+	];
 	#extraConfig = ''
 	 #   for_window [class="^.*"] border pixel 0# resize window (you can also use the mouse for that)
 	#'';

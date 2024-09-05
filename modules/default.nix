@@ -109,8 +109,7 @@
 	wl-clipboard
 	unzip
 	
-	# traceroute, telnet
-	inetutils
+	traceroute
 	# nslookup, dig
 	dnsutils
 	netperf

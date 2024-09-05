@@ -28,6 +28,10 @@
 	pasystray
 	trayer
 	tofi
+	grim
+	slurp
+	swaylock
+	swappy
 
 	htop
 	neofetch
