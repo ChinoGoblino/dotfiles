@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
+    options = {
+	wallpaper = lib.mkOption {
+	    default = /etc/nixos/home-manager/wallpapers/nix-wallpaper-nineish-catppuccin-mocha-alt.png;
+	    type = lib.types.path;
+	};
+    };
+    
+    config = {
     wayland.windowManager.sway = {
 	enable = true;
 	#checkConfig = false;
@@ -32,11 +40,11 @@
 	#dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
 	];
 
-	#config.output = {
-	#    "*" = {
-	#	bg = "~/.dotfiles/Wallpapers/nix-wallpaper-nineish-catppuccin-mocha-alt.png fill";
-	#    };
-	#};
+	config.output = {
+	    "*" = {
+		bg = "${config.wallpaper} fill";
+	    };
+	};
 
 	config.keybindings = let mod = config.wayland.windowManager.sway.config.modifier;
 	in {
@@ -139,6 +147,7 @@
 	#extraConfig = ''
 	 #   for_window [class="^.*"] border pixel 0# resize window (you can also use the mouse for that)
 	#'';
+    };
     };
 }
 # Can remove swaylock, slurp and grim from master config
