@@ -39,6 +39,7 @@
 	playerctl
 
 	xarchiver
+	libreoffice
 	nemo
 	obsidian #unfree
 	firefox
@@ -91,6 +92,15 @@
 	};
     };
 
+    qt = {
+	enable = true;
+	platformTheme.name = "qtct";
+	style = {
+	    package = pkgs.catppuccin-qt5ct;
+	    name = "Catppuccin-Macchiato"; 
+	};
+    };
+
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
     # shell provided by Home Manager. If you don't want to manage your shell
@@ -108,7 +118,8 @@
     #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
     #
     home.sessionVariables = {
-	# EDITOR = "emacs";
+	QT_STYLE_OVERRIDE = "Catppuccin-Macchiato";
+	QT_QPA_PLATFORMTHEME = "qt5ct";
     };
 
     home.activation = {

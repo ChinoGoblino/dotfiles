@@ -9,5 +9,7 @@
 
 	workspace 1 output DP-2
 	workspace 2 output DP-3
+
+	default_orientation vertical
     '';
 }
