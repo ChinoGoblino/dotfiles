@@ -42,6 +42,7 @@
 	libreoffice
 	nemo
 	obsidian #unfree
+	element-desktop
 	firefox
 	kitty
 	gimp
@@ -92,14 +93,7 @@
 	};
     };
 
-    qt = {
-	enable = true;
-	platformTheme.name = "qtct";
-	style = {
-	    package = pkgs.catppuccin-qt5ct;
-	    name = "Catppuccin-Macchiato"; 
-	};
-    };
+  
 
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -118,8 +112,7 @@
     #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
     #
     home.sessionVariables = {
-	QT_STYLE_OVERRIDE = "Catppuccin-Macchiato";
-	QT_QPA_PLATFORMTHEME = "qt5ct";
+    
     };
 
     home.activation = {
@@ -139,7 +132,7 @@
 	    accents = [ "lavender" ];
 	    variant = "macchiato";
 	};
-    };
+    };   
 
     home.pointerCursor = {
 	name = "Capitaine Cursors (Nord)";
@@ -148,6 +141,12 @@
     };
 
     programs = {
+	bash = {
+	    enable = true;
+	    shellAliases = {
+		sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+	    };
+	};
 	neovim = {
 	    enable = true;
 	    viAlias = true;

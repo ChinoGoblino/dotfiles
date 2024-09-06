@@ -27,22 +27,11 @@
 	enable = true;
 	settings.PasswordAuthentication = false;
 	settings.KbdInteractiveAuthentication = false;
-	#settings.PermitRootLogin = "yes";
     };
 
     users.users.chino.openssh.authorizedKeys.keyFiles = [
 	./ssh/authorized_keys
     ];
-
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-    home-manager = {
-	extraSpecialArgs = { inherit inputs; };
-	users = {
-	    chino = import ../home-manager/home.nix;
-	};
-    };
-
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
