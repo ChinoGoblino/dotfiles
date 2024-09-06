@@ -145,21 +145,26 @@
 	starship = {
 	    enable = true;
 	    settings = {
-		add_newline = false;
-		format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+		add_newline = true;
+		format = "$shlvl$shell$username$sudo$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
 		shlvl = {
 		    disabled = false;
 		    symbol = "ﰬ";
 		    style = "bright-red bold";
 		};
-		shell = {
-		    disabled = false;
-		    format = "$indicator";
-		    bash_indicator = "$username(bright-white) ";
-		};
 		username = {
-		    style_user = "bright-white bold";
+		    show_always = true;
+		    style_user = "#b7bdf8 bold";
 		    style_root = "bright-red bold";
+		    format = "[$user]($style) ";
+		};
+		hostname = {
+		    ssh_only = true;
+		    format = "on [$hostname](bold yellow)";
+		};
+		sudo = {
+		    format = "[$symbol]($style)";
+		    disabled = false;
 		};
 	    };
 	};
