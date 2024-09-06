@@ -174,16 +174,21 @@
 		sshcse = "ssh z5588665@login.cse.unsw.edu.au";
 	    };
 	};
+
 	neovim = {
 	    enable = true;
 	    viAlias = true;
 	    vimAlias = true;
+	    vimdiffAlias = true;
 	    plugins = with pkgs.vimPlugins; [
-		nvchad
+		neo-tree-nvim
+		#gitsigns-nvim
+		#nvim-cmp
 	    ];
 	    extraConfig = "
 		set clipboard=unnamedplus
 		set shiftwidth=4
+		set number
 			";
 	};
 	git = {
