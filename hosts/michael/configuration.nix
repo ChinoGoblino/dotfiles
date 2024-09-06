@@ -23,6 +23,16 @@
     steam
   ];
 
+   fileSystems."/mnt/games" =
+    { 
+	device = "/dev/disk/by-uuid/956c562f-aa38-4fa3-b042-020552d5bbd6";
+	fsType = "ext4";
+    };
+
+    # Steam requires 32 bit
+    hardware.graphics.enable32Bit = true;
+    hardware.pulseaudio.support32Bit = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
