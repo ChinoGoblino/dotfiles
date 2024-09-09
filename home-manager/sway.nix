@@ -49,7 +49,6 @@
 	in {
 	    "${mod}+Control+l" = "swaylock"; 
 	    "${mod}+t" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-	    #"${mod}+t" = ''exec grim -g "$(slurp)" ~/Desktop/screenshot-$(date +%s).png 2> /dev/null'';
 	    "${mod}+x" = "exec kitty";
 	    "${mod}+m" = "exec mc";
 	    "${mod}+b" = "exec firefox";
@@ -152,10 +151,4 @@
 		};
 	    }
 	];
-	#extraConfig = ''
-	 #   for_window [class="^.*"] border pixel 0# resize window (you can also use the mouse for that)
-	#'';
-    };
-    };
 }
-# Can remove swaylock, slurp and grim from master config
