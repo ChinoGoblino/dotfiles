@@ -43,13 +43,15 @@
 	libreoffice
 	nemo
 	obsidian #unfree
-	element-desktop
-	firefox
-	kitty
-	gimp
-	pwvucontrol
-	wireshark
-    ];
+		element-desktop
+		firefox
+		kitty
+		gimp
+		pwvucontrol
+		wireshark
+		thunderbird
+		protonmail-bridge
+	];
 
     imports = [
 	./waybar.nix
@@ -81,7 +83,7 @@
 	desktopEntries = {
 	    obsidian = {
 		name = "Obsidian";
-		exec = "obsidian --ozone-platform-hint=auto";
+		exec = "obsidian --no-sandbox --ozone-platform=wayland --ozone-platform-hint=auto --enable-features=UseOzonePlatform,WaylandWindowDecorations %U ";
 	    };
 	    nemo = {
 		name = "Nemo";
@@ -91,6 +93,17 @@
 		name = "GIMP";
 		exec = "gimp";
 	    };
+	};
+	userDirs = {
+	    enable = true;
+	    desktop = "\$HOME/Desktop";
+	    documents = "\$HOME/Documents";
+	    download = "\$HOME/Downloads";
+	    music = "\$HOME/Music";
+	    pictures = "\$HOME/Pictures";
+	    templates = "\$HOME/Templates";
+	    videos = "\$HOME/Videos";
+	    extraConfig = {};
 	};
     };
 
@@ -141,30 +154,26 @@
 	gtk.enable = true;
     };
 
-    programs = {
-	starship = {
-	    enable = true;
+	programs = {
+		starship = {
+			enable = true;
 	    settings = {
-		add_newline = true;
-		format = "$shlvl$shell$username$sudo$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
-		shlvl = {
-		    disabled = false;
-		    symbol = "ﰬ";
-		    style = "bright-red bold";
-		};
-		username = {
-		    show_always = true;
-		    style_user = "#b7bdf8 bold";
-		    style_root = "bright-red bold";
-		    format = "[$user]($style) ";
-		};
-		hostname = {
-		    ssh_only = true;
-		    format = "on [$hostname](bold yellow)";
+				add_newline = true;
+				username = {
+					disabled = false;
+					style_user = "#b7bdf8 bold";
+					style_root = "bright-red bold";
+					format = "[$user]($style) ";
+				};
+		line_break = {
+		    disabled = true;
 		};
 		sudo = {
-		    format = "[$symbol]($style)";
-		    disabled = false;
+		    disabled = true;
+		};
+		character = {
+		    success_symbol = "[\\$](bold green)";
+		    error_symbol = "[\\$](bold red)";
 		};
 	    };
 	};
@@ -185,11 +194,23 @@
 		#gitsigns-nvim
 		#nvim-cmp
 	    ];
-	    extraConfig = "
+	    extraConfig = ''
 		set clipboard=unnamedplus
-		set shiftwidth=4
 		set number
-			";
+		set shiftwidth=4
+		set softtabstop=4
+		set tabstop=4
+		
+		" Filetype-specific settings
+		augroup filetypes
+		    autocmd!
+		    " MIPS files: set tab width to 8 spaces
+		    autocmd BufRead,BufNewFile *.s setlocal ts=8 sw=8 sts=8
+
+		    " .nix files: set tab width to 2 spaces
+		    autocmd FileType nix setlocal ts=2 sw=2 sts=2
+		augroup END
+	    '';
 	};
 	git = {
 	    enable = true;

@@ -65,7 +65,6 @@
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’
-
     users.groups.storage = {};
     users.users.chino = {
 	isNormalUser = true;
@@ -97,11 +96,15 @@
 	home-manager
 	wl-clipboard
 	unzip
+	man-pages
 	
 	traceroute
 	# nslookup, dig
 	dnsutils
 	netperf
+
+	clang
+	cargo
     ];
 
     fonts.packages = with pkgs; [
@@ -133,4 +136,19 @@
 	};
     };
 
+    security.pam.services.greetd.enableGnomeKeyring = true;
+		services.gnome.gnome-keyring.enable = true;
+
+    environment.etc.inputrc = {
+	text = ''
+	    set bell-style none
+	    set meta-flag on
+	    set input-meta on
+	    set convert-meta off
+	    set output-meta on
+	    set colored-stats on
+
+	    set completion-ignore-case on
+	'';
+    };
 }
