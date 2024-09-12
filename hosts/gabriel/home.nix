@@ -8,7 +8,5 @@
 		input "type:touchpad" {
 	    tap enabled
 		}
-
-		default_orientation vertical
   '';	
 }

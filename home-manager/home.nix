@@ -1,48 +1,48 @@
 { inputs, config, lib, pkgs, ... }:
 
 {  
-    home.username = "chino";
-    home.homeDirectory = "/home/chino";
-
+	home.username = "chino";
+	home.homeDirectory = "/home/chino";
+  
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
     
-    # This value determines the Home Manager release that your configuration is
-    # compatible with. This helps avoid breakage when a new Home Manager release
-    # introduces backwards incompatible changes.
-    #
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
-    home.stateVersion = "23.11"; # Please read the comment before changing.
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
-    
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-    home.packages = with pkgs; [
-	dconf
-	syncthingtray
-	papirus-icon-theme
-	networkmanagerapplet
-	waybar
-	dunst
-	pasystray
-	trayer
-	tofi
-	grim
-	slurp
-	swaylock
-	swappy
+  home.packages = with pkgs; [
+		dconf
+		syncthingtray
+		papirus-icon-theme
+		networkmanagerapplet
+		waybar
+		dunst
+		pasystray
+		trayer
+		tofi
+		grim
+		slurp
+		swaylock
+		swappy
 
-	htop
-	neofetch
-	mc
-	playerctl
-	starship
+		htop
+		neofetch
+		mc
+		playerctl
+		starship
 
-	xarchiver
-	libreoffice
-	nemo
-	obsidian #unfree
+		xarchiver
+		libreoffice
+		nemo
+		obsidian #unfree
+		vesktop #unfree-backend
 		element-desktop
 		firefox
 		kitty
@@ -53,48 +53,48 @@
 		protonmail-bridge
 	];
 
-    imports = [
-	./waybar.nix
-	./sway.nix
-    ];
+	imports = [
+		./waybar.nix
+		./sway.nix
+  ];
 
-    # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through 'home.file'.
-    home.file = {
-	# # Building this configuration will create a copy of 'dotfiles/screenrc' in
-	# # the Nix store. Activating the configuration will then make '~/.screenrc' a
-	# # symlink to the Nix store copy.
-	# ".screenrc".source = dotfiles/screenrc;
+	# Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+		# # Building this configuration will create a copy of 'dotfiles/screenrc' in
+		# # the Nix store. Activating the configuration will then make '~/.screenrc' a
+		# # symlink to the Nix store copy.
+		# ".screenrc".source = dotfiles/screenrc;
 
-	# # You can also set the file content immediately.
-	# ".gradle/gradle.properties".text = ''
-	#   org.gradle.console=verbose
-	#   org.gradle.daemon.idletimeout=3600000
-	# '';
-    };
+		# # You can also set the file content immediately.
+		# ".gradle/gradle.properties".text = ''
+		#   org.gradle.console=verbose
+		#   org.gradle.daemon.idletimeout=3600000
+		# '';
+  };
 
-    services.syncthing = {
-	enable = true;
-    };
+  services.syncthing = {
+		enable = true;
+  };
 
-    xdg = {
-	enable = true;
-	mime.enable = true;
-	desktopEntries = {
-	    obsidian = {
-		name = "Obsidian";
-		exec = "obsidian --no-sandbox --ozone-platform=wayland --ozone-platform-hint=auto --enable-features=UseOzonePlatform,WaylandWindowDecorations %U ";
+	xdg = {
+		enable = true;
+		mime.enable = true;
+		desktopEntries = {
+			obsidian = {
+				name = "Obsidian";
+				exec = "obsidian --no-sandbox --ozone-platform=wayland --ozone-platform-hint=auto --enable-features=UseOzonePlatform,WaylandWindowDecorations %U ";
 	    };
 	    nemo = {
-		name = "Nemo";
-		exec = "nemo";
+				name = "Nemo";
+				exec = "nemo";
 	    };
 	    gimp = {
-		name = "GIMP";
-		exec = "gimp";
+				name = "GIMP";
+				exec = "gimp";
 	    };
-	};
-	userDirs = {
+		};
+		userDirs = {
 	    enable = true;
 	    desktop = "\$HOME/Desktop";
 	    documents = "\$HOME/Documents";
@@ -104,55 +104,55 @@
 	    templates = "\$HOME/Templates";
 	    videos = "\$HOME/Videos";
 	    extraConfig = {};
+		};
 	};
-    };
 
   
 
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. These will be explicitly sourced when using a
-    # shell provided by Home Manager. If you don't want to manage your shell
-    # through Home Manager then you have to manually source 'hm-session-vars.sh'
-    # located at either
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
-    #
-    home.sessionVariables = {
+	# Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
+  #
+  home.sessionVariables = {
     
-    };
+  };
 
-    home.activation = {
-	# https://github.com/philj56/tofi/issues/115#issuecomment-1701748297
-	regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-	    tofi_cache=${config.xdg.cacheHome}/tofi-drun
+  home.activation = {
+		# https://github.com/philj56/tofi/issues/115#issuecomment-1701748297
+		regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+			tofi_cache=${config.xdg.cacheHome}/tofi-drun
 	    [[ -f "$tofi_cache" ]] && rm "$tofi_cache"
-	    '';
-    };
+	  '';
+  };
 
-    gtk = {
-	enable = true;
-	iconTheme.name = "Papirus";
-	iconTheme.package = pkgs.papirus-folders;
-	theme.name = "catppuccin-macchiato-lavender-standard";
-	theme.package = pkgs.catppuccin-gtk.override {
+  gtk = {
+		enable = true;
+		iconTheme.name = "Papirus";
+		iconTheme.package = pkgs.papirus-folders;
+		theme.name = "catppuccin-macchiato-lavender-standard";
+		theme.package = pkgs.catppuccin-gtk.override {
 	    accents = [ "lavender" ];
 	    variant = "macchiato";
-	};
-    };   
+		};
+  };   
 
-    home.pointerCursor = {
-	name = "Capitaine Cursors (Nord)";
-	package = pkgs.capitaine-cursors-themed;
-	gtk.enable = true;
-    };
+  home.pointerCursor = {
+		name = "Capitaine Cursors (Nord)";
+		package = pkgs.capitaine-cursors-themed;
+		gtk.enable = true;
+  };
 
 	programs = {
 		starship = {
@@ -165,79 +165,87 @@
 					style_root = "bright-red bold";
 					format = "[$user]($style) ";
 				};
-		line_break = {
-		    disabled = true;
+				line_break = {
+					disabled = true;
+				};
+				sudo = {
+					disabled = true;
+				};
+				character = {
+					success_symbol = "[\\$](bold green)";
+					error_symbol = "[\\$](bold red)";
+				};
+			};
 		};
-		sudo = {
-		    disabled = true;
-		};
-		character = {
-		    success_symbol = "[\\$](bold green)";
-		    error_symbol = "[\\$](bold red)";
-		};
-	    };
-	};
-	bash = {
-	    enable = true;
+		
+		bash = {
+			enable = true;
 	    shellAliases = {
-		sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+				sshcse = "ssh z5588665@login.cse.unsw.edu.au";
 	    };
-	};
+		};
 
-	neovim = {
+		neovim = {
 	    enable = true;
 	    viAlias = true;
 	    vimAlias = true;
 	    vimdiffAlias = true;
 	    plugins = with pkgs.vimPlugins; [
-		neo-tree-nvim
-		#gitsigns-nvim
-		#nvim-cmp
+				neo-tree-nvim
+				#gitsigns-nvim
+				#nvim-cmp
 	    ];
 	    extraConfig = ''
-		set clipboard=unnamedplus
-		set number
-		set shiftwidth=4
-		set softtabstop=4
-		set tabstop=4
+				set clipboard=unnamedplus
+				set number
+				set shiftwidth=4
+				set softtabstop=4
+				set tabstop=4
 		
-		" Filetype-specific settings
-		augroup filetypes
-		    autocmd!
-		    " MIPS files: set tab width to 8 spaces
-		    autocmd BufRead,BufNewFile *.s setlocal ts=8 sw=8 sts=8
+				" Filetype-specific settings
+					augroup filetypes
+					autocmd!
+						" MIPS files: set tab width to 8 spaces
+							autocmd BufRead,BufNewFile *.s setlocal ts=8 sw=8 sts=8
 
-		    " .nix files: set tab width to 2 spaces
-		    autocmd FileType nix setlocal ts=2 sw=2 sts=2
-		augroup END
+						" .nix files: set tab width to 2 spaces
+							autocmd FileType nix setlocal ts=2 sw=2 sts=2
+					augroup END
 	    '';
+		};
+
+		git = {
+			enable = true;
+			userName = "chinoGoblino";
+			userEmail = "general@ethonium.com";
+			extraConfig = {
+				init.defaultBranch = "main";
+				safe.directory = "/etc/nixos";
+			};
+		};
+
+		kitty = {
+			enable = true;
+			theme = "Catppuccin-Macchiato";
+			settings = {
+				enable_audio_bell = false;
+				scrollback_lines = 10000;
+			};
+		};
+
+		tofi = {
+			enable = true;
+			settings = {
+				font 	     	 = "Fira Code";
+				text-color       = "#cad3f5";
+				prompt-color     = "#7dc4e4";
+				prompt-text	 = "drun: ";
+				selection-color  = "#ed8796";
+				background-color = "#1e2030";
+				border-width     = 4;
+				border-color     = "#c6a0f6";
+				hide-cursor      = true;
+			};
+		};
 	};
-	git = {
-	    enable = true;
-	    userName = "chinoGoblino";
-	    userEmail = "general@ethonium.com";
-	    extraConfig = {
-		init.defaultBranch = "main";
-		safe.directory = "/etc/nixos";
-	    };
-	};
-	kitty = {
-	    enable = true;
-	    theme = "Catppuccin-Macchiato";
-	};
-	tofi = {
-	    enable = true;
-	    settings = {
-		font 	     	 = "Fira Code";
-		text-color       = "#cad3f5";
-		prompt-color     = "#7dc4e4";
-		prompt-text	 = "drun: ";
-		selection-color  = "#ed8796";
-		background-color = "#1e2030";
-		border-width     = 4;
-		border-color     = "#c6a0f6";
-		hide-cursor      = true;
-	    };
-	};
-    };
 }
