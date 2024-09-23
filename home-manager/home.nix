@@ -152,6 +152,10 @@
 		name = "Capitaine Cursors (Nord)";
 		package = pkgs.capitaine-cursors-themed;
 		gtk.enable = true;
+		x11 = {
+     enable = true;
+     defaultCursor = "Capitaine Cursors (Nord)";
+   };
   };
 
 	programs = {
@@ -192,6 +196,7 @@
 	    vimdiffAlias = true;
 	    plugins = with pkgs.vimPlugins; [
 				neo-tree-nvim
+				catppuccin-nvim
 				#gitsigns-nvim
 				#nvim-cmp
 	    ];
@@ -201,6 +206,7 @@
 				set shiftwidth=4
 				set softtabstop=4
 				set tabstop=4
+				colorscheme catppuccin-macchiato
 		
 				" Filetype-specific settings
 					augroup filetypes
@@ -236,10 +242,10 @@
 		tofi = {
 			enable = true;
 			settings = {
-				font 	     	 = "Fira Code";
+				font						 = "Fira Code";
 				text-color       = "#cad3f5";
 				prompt-color     = "#7dc4e4";
-				prompt-text	 = "drun: ";
+				prompt-text	     = "drun: ";
 				selection-color  = "#ed8796";
 				background-color = "#1e2030";
 				border-width     = 4;

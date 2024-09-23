@@ -62,28 +62,28 @@
 					"${mod}+Shift+r" = "exec reboot";
 					"${mod}+Shift+s" = "exec poweroff";
 
-					"${mod}+j" = "focus left";
-					"${mod}+k" = "focus down";
-					"${mod}+l" = "focus up";
-					"${mod}+semicolon" = "focus right";
+					"${mod}+h" = "focus left";
+					"${mod}+j" = "focus down";
+					"${mod}+k" = "focus up";
+					"${mod}+l" = "focus right";
 
 					"${mod}+Left" = "focus left";
 					"${mod}+Down" = "focus down";
 					"${mod}+Up" = "focus up";
 					"${mod}+Right" = "focus right";
 
-					"${mod}+Shift+j" = "move left";
-					"${mod}+Shift+k" = "move down";
-					"${mod}+Shift+l" = "move up";
-					"${mod}+Shift+semicolon" = "move right";
+					"${mod}+Shift+h" = "move left";
+					"${mod}+Shift+j" = "move down";
+					"${mod}+Shift+k" = "move up";
+					"${mod}+Shift+l" = "move right";
 
 					"${mod}+Shift+Left" = "move left";
 					"${mod}+Shift+Down" = "move down";
 					"${mod}+Shift+Up" = "move up";
 					"${mod}+Shift+Right" = "move right";
 
-					"${mod}+h" = "split h";
-					"${mod}+v" = "split v";
+					"${mod}+bracketleft" = "split h";
+					"${mod}+bracketright" = "split v";
 
 					"${mod}+f" = "fullscreen toggle";
 
@@ -138,22 +138,13 @@
 					"Right" = "resize grow width 10 px or 10 ppt";
 					"Up" = "resize shrink height 10 px or 10 ppt";
 
-					"k" = "resize grow height 10 px or 10 ppt";
-					"j" = "resize shrink width 10 px or 10 ppt";
-					"semicolon" = "resize grow width 10 px or 10 ppt";
-					"l" = "resize shrink height 10 px or 10 ppt";
+					"j" = "resize grow height 10 px or 10 ppt";
+					"h" = "resize shrink width 10 px or 10 ppt";
+					"l" = "resize grow width 10 px or 10 ppt";
+					"k" = "resize shrink height 10 px or 10 ppt";
 	    
 					"${config.wayland.windowManager.sway.config.modifier}+d" = "mode default";
 				};
-			
-				#window.commands = [
-				#	{
-				#		command = "split toggle";
-				#		criteria = {
-				#			app_id=".*";
-				#		};
-				#	}
-				#];
 			};
 		};
 	};

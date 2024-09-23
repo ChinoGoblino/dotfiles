@@ -80,7 +80,7 @@
 		XDG_CURRENT_DESKTOP = "sway";
 		XDG_SESSION_DESKTOP = "sway";
 		QT_QPA_PLATFORM = "wayland";
-		SDL_VIDEODRIVER = "wayland";
+		#SDL_VIDEODRIVER = "wayland";    #Disabled because broke Steam games
 		_JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
@@ -149,6 +149,10 @@
 	    set colored-stats on
 
 	    set completion-ignore-case on
+			set editing-mode vi
+			set vi-ins-mode-string \1\e[5 q\e]12;\a\2
+			set vi-cmd-mode-string \1\e[1 q\e]12;orange\a\2
+			set show-mode-in-prompt on
 	'';
   };
 }
