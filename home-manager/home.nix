@@ -93,6 +93,10 @@
 				name = "GIMP";
 				exec = "gimp";
 	    };
+			vesktop = {
+				name = "Vesktop";
+				exec = "vesktop --ozone-platform=wayland";
+			};
 		};
 		userDirs = {
 	    enable = true;
