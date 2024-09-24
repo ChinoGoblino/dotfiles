@@ -9,7 +9,7 @@
 				spacing = 4;
 				modules-left = ["sway/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
 				modules-center = ["sway/window"];
-				modules-right = ["pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray"];
+				modules-right = ["pulseaudio" "network" "disk" "cpu" "memory" "temperature" "battery" "clock" "tray"];
 
 				"sway/window" = {
 					format = "{title}";
@@ -46,6 +46,17 @@
 					format-alt = "{specific_free:0.2f}/{specific_total:0.2f}GiB";
 					unit = "GiB";
 					path = "/";
+				};
+				"battery" = {
+					bat = "BAT0";
+					interval = 60;
+					states = {
+						warning = 30;
+						critical = 15;
+					};
+					format = "{capacity}% {icon}";
+					format-icons = ["" "" "" "" ""];
+					max-length = 25;
 				};
 				"network" = {
 		    # interface = "wlp2*"; // (Optional) To force the use of this interface
