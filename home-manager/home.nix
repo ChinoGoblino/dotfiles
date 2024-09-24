@@ -186,6 +186,8 @@
 			enable = true;
 	    shellAliases = {
 				sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+				# TODO REMOVE:
+				mipsy = "~/mipsy/target/debug/mipsy";
 	    };
 		};
 
