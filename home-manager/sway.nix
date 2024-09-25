@@ -59,8 +59,8 @@
 
 					"${mod}+Shift+c" = "reload";
 					"${mod}+Control+r" = "restart";
-					"${mod}+Shift+r" = "exec reboot";
-					"${mod}+Shift+s" = "exec poweroff";
+					"${mod}+Tab+r" = "exec reboot";
+					"${mod}+Tab+s" = "exec poweroff";
 
 					"${mod}+h" = "focus left";
 					"${mod}+j" = "focus down";
