@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
 	programs.waybar = {	
@@ -9,7 +9,11 @@
 				spacing = 4;
 				modules-left = ["sway/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
 				modules-center = ["sway/window"];
-				modules-right = ["pulseaudio" "network" "disk" "cpu" "memory" "temperature" "battery" "clock" "tray"];
+				modules-right = lib.mkIf (config.system.profile == "gabriel") [
+          "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "battery" "clock" "tray"
+        ] ([
+          "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray"
+        ]);
 
 				"sway/window" = {
 					format = "{title}";

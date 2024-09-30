@@ -22,10 +22,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
+		brightnessctl
   ];
 
 	powerManagement.enable = true;
+	
+	virtualisation.virtualbox.host.enable = true;
+	users.extraGroups.vboxusers.members = [ "chino" ];
 
 	#virtualisation.docker = {
 	#	enable = true;
