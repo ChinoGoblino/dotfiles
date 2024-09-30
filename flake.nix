@@ -19,7 +19,7 @@
     nixosConfigurations = {
       gabriel = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; profile = "gabriel"; };
         modules = [
           ./hosts/gabriel/configuration.nix
           ./modules
@@ -30,7 +30,6 @@
                 ./hosts/gabriel/home.nix
                 ./home-manager/home.nix
               ];
-							profile = "gabriel";
             };
           }
         ];
@@ -38,7 +37,7 @@
 
       michael = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; profile = "michael"; };
         modules = [
           ./hosts/michael/configuration.nix
           ./modules
@@ -49,7 +48,6 @@
                 ./hosts/michael/home.nix
                 ./home-manager/home.nix
               ];
-							profile = "michael";
             };
           }
         ];

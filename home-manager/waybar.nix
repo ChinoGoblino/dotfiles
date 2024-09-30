@@ -9,11 +9,10 @@
 					spacing = 4;
 					modules-left = ["sway/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
 					modules-center = ["sway/window"];
-					modules-right = lib.mkIf (profile == "gabriel") [
-						"pulseaudio" "network" "disk" "cpu" "memory" "temperature" "battery" "clock" "tray"
-					] ([
-						"pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray"
-					]);
+					modules-right = if profile == "gabriel" then
+          [ "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray" ]
+        else
+          [ "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "battery" "clock" "tray" ];
 
 					"sway/window" = {
 						format = "{title}";
