@@ -30,6 +30,7 @@
                 ./hosts/gabriel/home.nix
                 ./home-manager/home.nix
               ];
+							profile = "gabriel";
             };
           }
         ];
@@ -48,6 +49,7 @@
                 ./hosts/michael/home.nix
                 ./home-manager/home.nix
               ];
+							profile = "michael";
             };
           }
         ];
