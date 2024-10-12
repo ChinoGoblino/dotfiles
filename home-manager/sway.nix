@@ -59,8 +59,8 @@
 
 					"${mod}+Shift+c" = "reload";
 					"${mod}+Control+r" = "restart";
-					"${mod}+Shift+r" = "exec reboot";
-					"${mod}+Shift+s" = "exec poweroff";
+					"${mod}+Tab+r" = "exec reboot";
+					"${mod}+Tab+s" = "exec poweroff";
 
 					"${mod}+h" = "focus left";
 					"${mod}+j" = "focus down";
@@ -126,8 +126,8 @@
 					XF86AudioPrev = "exec playerctl prev";
 					XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1";
 					XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-					#XF86MonBrightnessUp = "exec brightnessctl set +10";
-					#XF86MonBrightnessDown = "exec brightnessctl set -10";
+					XF86MonBrightnessUp = "exec brightnessctl set +10";
+					XF86MonBrightnessDown = "exec brightnessctl set 10-";
 				};
 	
 				modes.resize = {

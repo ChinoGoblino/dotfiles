@@ -22,8 +22,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    
+		brightnessctl
   ];
+
+	powerManagement.enable = true;
+	
+	virtualisation.virtualbox.host.enable = true;
+	users.extraGroups.vboxusers.members = [ "chino" ];
 
 	#virtualisation.docker = {
 	#	enable = true;
@@ -33,7 +38,6 @@
 	#	};
 	#};
 
-  # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

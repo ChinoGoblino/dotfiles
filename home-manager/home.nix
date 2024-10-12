@@ -55,7 +55,8 @@
 
 	imports = [
 		./waybar.nix
-		./sway.nix
+		#./sway.nix
+		./hyprland.nix
   ];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -131,7 +132,7 @@
   #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    
+		NIXOS_OZONE_WL = "1";   
   };
 
   home.activation = {

@@ -1,12 +1,7 @@
 { config, pkgs, ... }:
 
 {
-	wayland.windowManager.sway.extraConfig = ''
-		workspace 1 output eDP-1
-		output * scale 1.5 resolution 2880x1800@90Hz
-	    
-		input "type:touchpad" {
-	    tap enabled
-		}
-  '';	
+	wayland.windowManager.hyprland.settings = {
+		monitor = "eDP-1, highrr, 0x0, 1.5";
+	};
 }
