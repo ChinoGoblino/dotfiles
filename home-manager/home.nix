@@ -95,6 +95,7 @@
 	    };
 			vesktop = {
 				name = "Vesktop";
+				genericName = "Discord";
 				exec = "vesktop --ozone-platform=wayland";
 			};
 		};
@@ -245,6 +246,7 @@
 			};
 		};
 
+		# If tofi not updating app list delete tofi-drun and tofi-compgen in $XDG_CACHE_HOME
 		tofi = {
 			enable = true;
 			settings = {

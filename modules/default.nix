@@ -25,7 +25,7 @@
   # Allow remote ssh / scp
   services.openssh = {
 		enable = true;
-		settings.PasswordAuthentication = false;
+		settings.PasswordAuthentication = true;
 		settings.KbdInteractiveAuthentication = false;
   };
 
@@ -105,12 +105,17 @@
 
 		clang
 		cargo
+		gnumake
+		python3
   ];
 
   fonts.packages = with pkgs; [
 		font-awesome
 		fira-code
   ];
+
+	# kdeconnect
+	programs.kdeconnect.enable = true;
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
