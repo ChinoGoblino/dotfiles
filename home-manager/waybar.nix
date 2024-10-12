@@ -1,256 +1,249 @@
 { config, lib, ... }:
 
+let
+	profile = "gabriel";
+in
 {
-		options = {
-			modules-right = lib.mkOption {
-				default = [ "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray" ];
-				type = lib.types.enum;
+	programs.waybar = {	
+		enable = true;
+		settings = {
+			mainBar = {
+				height = 30;
+				spacing = 4;
+				modules-left = ["hyprland/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
+				modules-center = ["hyprland/window"];
+				modules-right = if profile == "gabriel" then 
+					[ "pulseaudio" "network" "disk" "cpu" "memory" "battery" "clock" "tray" ]
+				else 
+					[ "pulseaudio" "network" "disk" "cpu" "memory" "temperature" "clock" "tray" ];
+
+				"hyprland/window" = {
+					format = "{title}";
+					max-length = 100;
+				};
+				"tray" = {
+					spacing = 10;	
+				};
+				"clock" = {
+					tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+					format-alt = "{:%Y-%m-%d}";
+				};
+				"cpu" = {
+					format = "{usage}% ";
+					tooltip = true;
+				};
+				"memory" = {
+					format = "{}% ";
+				};
+				"temperature" = {
+				# thermal-zone = 2;
+				# hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+					critical-threshold = 80;
+				# format-critical = "{temperatureC}°C {icon}";
+					format = "{temperatureC}°C {icon}";
+					format-icons = ["" "" ""];
+				};
+				"disk" = {
+					interval = 30;
+					format = "{percentage_used}% ";
+					format-alt = "{specific_free:0.2f}/{specific_total:0.2f}GiB";
+					unit = "GiB";
+					path = "/";
+				};
+				"battery" = {
+					bat = "BAT0";
+					interval = 60;
+					states = {
+						warning = 30;
+						critical = 15;
+					};
+					format = "{capacity}% {icon}";
+					format-icons = ["" "" "" "" ""];
+				};
+				"network" = {
+				# interface = "wlp2*"; // (Optional) To force the use of this interface
+					format-wifi = /*"{essid} ({signalStrength}%)*/"";
+					format-ethernet = "";
+					tooltip-format = "{ifname} via {gwaddr} ";
+					format-linked = "{ifname} (No IP) ";
+					format-disconnected = "⚠";
+					format-alt = /*"{ifname}: */"{ipaddr}/{cidr}";
+				};
+				"pulseaudio" = {
+				# scroll-step = 1; // %, can be a float
+					format = "{volume}% {icon}" /*{format_source}"*/;
+					format-bluetooth = "{volume}% {icon}-"/* {format_source}"*/;
+					format-bluetooth-muted = "muted {icon}-"/* {format_source}"*/;
+					format-muted = "muted"/* {format_source}"*/;
+					format-source = "{volume}% ";
+					format-source-muted = "";
+					format-icons = {
+						headphone = "";
+						hands-free = "";
+						headset = "";
+						phone = "";
+						portable = "";
+						car = "";
+						default = ["" "" ""];
+					};
+					on-click = "pwvucontrol";
+				};
 			};
 		};
+		style = ''
+			* {
+				border: 0;
+				border-radius: 0;
+				padding: 0 0;
+				font-family: 'Fira Code';
+				font-size: 13px;
+				}
 
-		config = {
-			programs.waybar = {	
-				enable = true;
-				settings = {
-					mainBar = {
-						height = 30;
-						spacing = 4;
-						modules-left = ["sway/workspaces" "sway/,mode" "sway/scratchpad" "custom/media"];
-						modules-center = ["sway/window"];
-						modules-right = config.modules-right;
+			window#waybar {
+				color: #cad3f5;
+				background:rgba (24, 25, 38, 0.7);
+			}
+	
+			#workspaces button {
+				color: #cad3f5;
+				margin-left: 0px;
+				margin-right: 0px;
+				padding: 3px 6px;
+				border-bottom: 2px;
+			}
 
-						"sway/window" = {
-							format = "{title}";
-							max-length = 100;
-						};
-						"sway/mode" = {
-							format = "<span style=\"italic\">{}</span>";
-						};
-						"tray" = {
-							spacing = 10;	
-						};
-						"clock" = {
-							tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-							format-alt = "{:%Y-%m-%d}";
-						};
-						"cpu" = {
-							format = "{usage}% ";
-							tooltip = true;
-						};
-						"memory" = {
-							format = "{}% ";
-						};
-						"temperature" = {
-						# thermal-zone = 2;
-						# hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-							critical-threshold = 80;
-						# format-critical = "{temperatureC}°C {icon}";
-							format = "{temperatureC}°C {icon}";
-							format-icons = ["" "" ""];
-						};
-						"disk" = {
-							interval = 30;
-							format = "{percentage_used}% ";
-							format-alt = "{specific_free:0.2f}/{specific_total:0.2f}GiB";
-							unit = "GiB";
-							path = "/";
-						};
-						"battery" = {
-							bat = "BAT0";
-							interval = 60;
-							states = {
-								warning = 30;
-								critical = 15;
-							};
-							format = "{capacity}% {icon}";
-							format-icons = ["" "" "" "" ""];
-							max-length = 25;
-						};
-						"network" = {
-						# interface = "wlp2*"; // (Optional) To force the use of this interface
-							format-wifi = /*"{essid} ({signalStrength}%)*/"";
-							format-ethernet = "";
-							tooltip-format = "{ifname} via {gwaddr} ";
-							format-linked = "{ifname} (No IP) ";
-							format-disconnected = "⚠";
-							format-alt = /*"{ifname}: */"{ipaddr}/{cidr}";
-						};
-						"pulseaudio" = {
-						# scroll-step = 1; // %, can be a float
-							format = "{volume}% {icon}" /*{format_source}"*/;
-							format-bluetooth = "{volume}% {icon}-"/* {format_source}"*/;
-							format-bluetooth-muted = "muted {icon}-"/* {format_source}"*/;
-							format-muted = "muted"/* {format_source}"*/;
-							format-source = "{volume}% ";
-							format-source-muted = "";
-							format-icons = {
-								headphone = "";
-								hands-free = "";
-								headset = "";
-								phone = "";
-								portable = "";
-								car = "";
-								default = ["" "" ""];
-							};
-							on-click = "pwvucontrol";
-						};
-					};
-				};
-				style = ''
-					* {
-						border: 0;
-						border-radius: 0;
-						padding: 0 0;
-						font-family: 'Fira Code';
-						font-size: 13px;
-						}
+			#workspaces button.active {
+				border-color: #397367;
+				font-weight: bold;
+				background-color: #b7bdf8;
+				color: #1e2030;
+			}
 
-					window#waybar {
-						color: #cad3f5;
-						background:rgba (24, 25, 38, 0.7);
-					}
-			
-					#workspaces button {
-						color: #cad3f5;
-						margin-left: 0px;
-						margin-right: 0px;
-						padding: 0px 1px;
-						border-bottom: 2px;
-					}
+			#workspaces button.focused:hover {
+				color: #b7bdf8;
+			}
 
-					#workspaces button.focused {
-						border-color: #397367;
-						font-weight: bold;
-						background-color: #b7bdf8;
-						color: #1e2030;
-					}
+			#workspaces button:hover {
+				border-color: #397367;
+				background: none;
+				box-shadow: inset 0 -3px #b7bdf8;
+			}
 
-					#workspaces button.focused:hover {
-						color: #b7bdf8;
-					}
+			#workspaces button.focused:hover {
+				background: rgba(0, 0, 0, 0.2);
+			}
 
-					#workspaces button:hover {
-						border-color: #397367;
-						background: none;
-						box-shadow: inset 0 -3px #b7bdf8;
-					}
+			#clock, #battery, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #tray, #window,#custom-launcher,#custom-power,#custom-pacman,#disk {
+				padding: 0 3px;
+				border-bottom: 3px;
+				border-style: solid;
+				margin-right: 5px;
+				margin-left: 5px;
+			}
+ 
+			/* -----------------------------------------------------------------------------
+			* Module styles
+			* -------------------------------------------------------------------------- */
 
-					#workspaces button.focused:hover {
-						background: rgba(0, 0, 0, 0.2);
-					}
+			#disk {
+				color: #7dc4e4;
+			}
 
-					#clock, #battery, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #tray, #window,#custom-launcher,#custom-power,#custom-pacman,#disk {
-						padding: 0 3px;
-						border-bottom: 3px;
-						border-style: solid;
-						margin-right: 5px;
-						margin-left: 5px;
-					}
-		 
-					/* -----------------------------------------------------------------------------
-					* Module styles
-					* -------------------------------------------------------------------------- */
+			#clock {
+				color: #c6a0f6;
+			}
 
-					#disk {
-						color: #7dc4e4;
-					}
+			#backlight {
+				color: #fb4934;
+			}
 
-					#clock {
-						color: #c6a0f6;
-					}
+			#battery {
+				color: #83a598;
+			}
 
-					#backlight {
-						color: #fb4934;
-					}
+			#battery.charging {
+				color: #81a1c1;
+			}
 
-					#battery {
-						color: #83a598;
-					}
+			@keyframes blink {
+				to {
+					color: #4c566a;
+					background-color: #eceff4;
+				}
+			}
 
-					#battery.charging {
-						color: #81a1c1;
-					}
+			#battery.critical:not(.charging) {
+				background: #bf616a;
+				color: #eceff4;
+				animation-name: blink;
+				animation-duration: 0.5s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
 
-					@keyframes blink {
-						to {
-							color: #4c566a;
-							background-color: #eceff4;
-						}
-					}
+			#cpu {
+				color: #f5a97f;
+			}
 
-					#battery.critical:not(.charging) {
-						background: #bf616a;
-						color: #eceff4;
-						animation-name: blink;
-						animation-duration: 0.5s;
-						animation-timing-function: linear;
-						animation-iteration-count: infinite;
-						animation-direction: alternate;
-					}
+			#memory {
+				color: #f0c6c6;
+			}
 
-					#cpu {
-						color: #f5a97f;
-					}
+			#network.disabled {
+				color: #bf616a;
+			}
 
-					#memory {
-						color: #f0c6c6;
-					}
+			#network {
+				color: #eed49f;
+			}
 
-					#network.disabled {
-						color: #bf616a;
-					}
+			#network.disconnected {
+				color: #bf616a;
+			}
 
-					#network {
-						color: #eed49f;
-					}
+			#pulseaudio {
+				color: #8aadf4;
+			}
 
-					#network.disconnected {
-						color: #bf616a;
-					}
+			#pulseaudio.muted {
+				color: #3b4252;
+			}
 
-					#pulseaudio {
-						color: #8aadf4;
-					}
+			#temperature {
+				color: #a6da95;
+			}
 
-					#pulseaudio.muted {
-						color: #3b4252;
-					}
+			#temperature.critical {
+				color: #bf616a;
+			}
 
-					#temperature {
-						color: #a6da95;
-					}
+			#idle_inhibitor {
+				color: #ebcb8b;
+			}
 
-					#temperature.critical {
-						color: #bf616a;
-					}
+			#tray {
+				margin-right: 0px;
+				border-bottom: 0;
+			}
 
-					#idle_inhibitor {
-						color: #ebcb8b;
-					}
+			#custom-launcher, #custom-power {
+				border-style: hidden;
+				margin-top: 2px;    
+			}
 
-					#tray {
-						margin-right: 0px;
-						border-bottom: 0;
-					}
+			#window {
+				border-style: hidden;
+				margin-top: 1px;  
+			}
 
-					#custom-launcher, #custom-power {
-						border-style: hidden;
-						margin-top: 2px;    
-					}
+			#mode {
+				margin-bottom:3px;
+			}
 
-					#window {
-						border-style: hidden;
-						margin-top: 1px;  
-					}
-
-					#mode {
-						margin-bottom:3px;
-					}
-
-					#custom-keyboard-layout {
-						color: #d08770;
-					}
-			'';
-		};
+			#custom-keyboard-layout {
+				color: #d08770;
+			}
+		'';
 	};
 }

@@ -77,10 +77,9 @@
 		EDITOR = "nvim";
 		GDK_BACKEND = "wayland,x11";
 		MOZ_ENABLE_WAYLAND = "1";
-		XDG_CURRENT_DESKTOP = "sway";
-		XDG_SESSION_DESKTOP = "sway";
+		XDG_CURRENT_DESKTOP = "hyprland";
+		XDG_SESSION_DESKTOP = "hyprland";
 		QT_QPA_PLATFORM = "wayland";
-		#SDL_VIDEODRIVER = "wayland";    #Disabled because broke Steam games
 		_JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
@@ -130,7 +129,7 @@
 		enable = true;
 		settings = {
 	    default_session = {
-				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
 				user = "greeter";
 	    };
 		};
