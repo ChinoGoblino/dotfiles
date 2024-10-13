@@ -24,6 +24,7 @@
 			bind = $mod, B, exec, firefox
 			bind = $mod, X, exec, kitty
 			bind = $mod, R, exec, tofi-drun --drun-launch=true
+			bind = $mod, T, exec, grim -g "$(slurp)" - | swappy -f -
 
 			bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 			bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
