@@ -31,6 +31,7 @@
 		slurp
 		swaylock
 		swappy
+		swww
 
 		htop
 		neofetch

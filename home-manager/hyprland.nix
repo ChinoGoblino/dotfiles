@@ -25,6 +25,7 @@
 
 			# Autostart
 			exec-once = dunst
+			exec-once = swww-daemon & sleep 0.5 && swww img /etc/nixos/home-manager/wallpapers/kitty.gif
 			exec = pkill waybar & sleep 0.5 && waybar
 			exec = pkill nm-applet & sleep 0.5 && nm-applet
 			exec = pkill pasystray & sleep 0.5 && pasystray
@@ -76,16 +77,16 @@
 			bind = SUPER SHIFT, J, movewindow, d 
 			
 			# Move active window to a workspace
-			bind = $mod SHIFT, 1, movetoworkspace, 1
-			bind = $mod SHIFT, 2, movetoworkspace, 2
-			bind = $mod SHIFT, 3, movetoworkspace, 3
-			bind = $mod SHIFT, 4, movetoworkspace, 4
-			bind = $mod SHIFT, 5, movetoworkspace, 5
-			bind = $mod SHIFT, 6, movetoworkspace, 6
-			bind = $mod SHIFT, 7, movetoworkspace, 7
-			bind = $mod SHIFT, 8, movetoworkspace, 8
-			bind = $mod SHIFT, 9, movetoworkspace, 9
-			bind = $mod SHIFT, 0, movetoworkspace, 10
+			bind = $mod SHIFT, 1, movetoworkspacesilent, 1
+			bind = $mod SHIFT, 2, movetoworkspacesilent, 2
+			bind = $mod SHIFT, 3, movetoworkspacesilent, 3
+			bind = $mod SHIFT, 4, movetoworkspacesilent, 4
+			bind = $mod SHIFT, 5, movetoworkspacesilent, 5
+			bind = $mod SHIFT, 6, movetoworkspacesilent, 6
+			bind = $mod SHIFT, 7, movetoworkspacesilent, 7
+			bind = $mod SHIFT, 8, movetoworkspacesilent, 8
+			bind = $mod SHIFT, 9, movetoworkspacesilent, 9
+			bind = $mod SHIFT, 0, movetoworkspacesilent, 10
 
 			# Move/resize windows with mod + LMB/RMB and dragging
 			bindm = $mod, mouse:272, movewindow
