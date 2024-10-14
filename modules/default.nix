@@ -81,6 +81,7 @@
 		XDG_SESSION_DESKTOP = "hyprland";
 		QT_QPA_PLATFORM = "wayland";
 		_JAVA_AWT_WM_NONREPARENTING = "1";
+		NIXOS_OZONE_WL = "1";
   };
 
   # Allow unfree packages

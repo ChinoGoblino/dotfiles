@@ -8,8 +8,21 @@
 			general {
 				gaps_in = 0
 				gaps_out = 0
+
+				layout = dwindle
 			}
-	
+
+			# Prevent blur on xwayland
+			xwayland {
+				force_zero_scaling = true
+			}
+
+			dwindle {
+				force_split = 2
+				permanent_direction_override = true
+				use_active_for_splits = false
+			}
+
 			# Autostart
 			exec-once = dunst
 			exec = pkill waybar & sleep 0.5 && waybar

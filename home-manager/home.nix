@@ -82,10 +82,6 @@
 		enable = true;
 		mime.enable = true;
 		desktopEntries = {
-			obsidian = {
-				name = "Obsidian";
-				exec = "obsidian --no-sandbox --ozone-platform=wayland --ozone-platform-hint=auto --enable-features=UseOzonePlatform,WaylandWindowDecorations %U ";
-	    };
 	    nemo = {
 				name = "Nemo";
 				exec = "nemo";
@@ -94,11 +90,6 @@
 				name = "GIMP";
 				exec = "gimp";
 	    };
-			vesktop = {
-				name = "Vesktop";
-				genericName = "Discord";
-				exec = "vesktop --ozone-platform=wayland";
-			};
 		};
 		userDirs = {
 	    enable = true;
