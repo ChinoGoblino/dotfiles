@@ -12,7 +12,7 @@
 	
 			# Autostart
 			exec-once = dunst
-			exec-once = swww-daemon & sleep 0.5 && swww img /etc/nixos/home-manager/wallpapers/nix-wallpaper-nineish-catppuccin-mocha-alt.png
+			exec-once = swww-daemon & sleep 0.5 && swww img /etc/nixos/home-manager/wallpapers/kitty.gif
 			exec = pkill waybar & sleep 0.5 && waybar
 			exec = pkill nm-applet & sleep 0.5 && nm-applet
 			exec = pkill pasystray & sleep 0.5 && pasystray
