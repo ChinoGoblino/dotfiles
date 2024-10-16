@@ -189,35 +189,40 @@
 	    };
 		};
 
-		neovim = {
+		neovim = 
+		let
+			# Makes lua specific syntax easier to read below
+			toLua = str: "lua << EOF\n${str}\nEOF\n";
+			toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+		in
+		{
 	    enable = true;
 	    viAlias = true;
 	    vimAlias = true;
 	    vimdiffAlias = true;
 	    plugins = with pkgs.vimPlugins; [
-				neo-tree-nvim
-				catppuccin-nvim
-				#gitsigns-nvim
-				#nvim-cmp
+				{
+					plugin = catppuccin-nvim;
+					config = "colorscheme catppuccin-macchiato";
+				}
+				# Pretty bottom status bar
+				{
+					plugin = lualine-nvim;
+					config = toLuaFile ./nvim/lualine.lua;
+				}
+				# Tree sidebar
+				{
+					plugin = nvim-tree-lua;
+				}
+				# File icons
+				{
+					plugin = nvim-web-devicons;
+				}
 	    ];
-	    extraConfig = ''
-				set clipboard=unnamedplus
-				set number
-				set shiftwidth=4
-				set softtabstop=4
-				set tabstop=4
-				colorscheme catppuccin-macchiato
-		
-				" Filetype-specific settings
-					augroup filetypes
-					autocmd!
-						" MIPS files: set tab width to 8 spaces
-							autocmd BufRead,BufNewFile *.s setlocal ts=8 sw=8 sts=8
-
-						" .nix files: set tab width to 2 spaces
-							autocmd FileType nix setlocal ts=2 sw=2 sts=2
-					augroup END
-	    '';
+			extraLuaConfig = ''
+				${builtins.readFile ./nvim/init.lua}
+				${builtins.readFile ./nvim/options.lua}
+			'';
 		};
 
 		git = {
