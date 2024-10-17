@@ -213,6 +213,7 @@
 				# Tree sidebar
 				{
 					plugin = nvim-tree-lua;
+					config = toLuaFile ./nvim/nvimtree.lua;
 				}
 				# File icons
 				{
