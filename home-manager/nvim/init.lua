@@ -1,4 +1,4 @@
 require('lualine')
 
-require('nvim-tree').setup()
+require('nvim-tree')
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
