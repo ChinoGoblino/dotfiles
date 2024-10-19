@@ -68,10 +68,12 @@
   users.groups.storage = {};
   users.users.chino = {
 		isNormalUser = true;
+		shell = pkgs.zsh;
 		description = "Ethan Scott";
 		extraGroups = [ "networkmanager" "wheel"];
 		packages = with pkgs; [];
   };
+	programs.zsh.enable = true;
 
   environment.variables = {
 		EDITOR = "nvim";
@@ -146,18 +148,7 @@
 
   environment.etc.inputrc = {
 		text = ''
-	    set bell-style none
-	    set meta-flag on
-	    set input-meta on
-	    set convert-meta off
-	    set output-meta on
-	    set colored-stats on
-
 	    set completion-ignore-case on
-			set editing-mode vi
-			set vi-ins-mode-string \1\e[5 q\e]12;\a\2
-			set vi-cmd-mode-string \1\e[1 q\e]12;orange\a\2
-			set show-mode-in-prompt on
-	'';
-  };
+		'';
+	};
 }

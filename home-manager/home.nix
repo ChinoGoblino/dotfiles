@@ -56,7 +56,6 @@
 
 	imports = [
 		./waybar.nix
-		#./sway.nix
 		./hyprland.nix
   ];
 
@@ -157,6 +156,34 @@
   };
 
 	programs = {
+		zsh = {
+			enable = true;
+			defaultKeymap = "viins";
+			enableCompletion = true;
+			autosuggestion.enable = true;
+			syntaxHighlighting.enable = true;
+
+			shellAliases = {
+				update = "sudo nixos-rebuild switch --flake /etc/nixos";
+
+				# TODO REMOVE:
+				mipsy = "~/mipsy/target/debug/mipsy";
+				sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+			};
+			initExtra = ''
+				# Case Insensitive autocomplete
+				autoload -Uz compinit && compinit
+				zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+				zstyle ':completion:*' menu select
+
+				zmodload zsh/complist
+				bindkey -M menuselect 'h' vi-backward-char
+				bindkey -M menuselect 'k' vi-up-line-or-history
+				bindkey -M menuselect 'l' vi-forward-char
+				bindkey -M menuselect 'j' vi-down-line-or-history
+			'';
+		};
+
 		starship = {
 			enable = true;
 	    settings = {
@@ -174,19 +201,10 @@
 					disabled = true;
 				};
 				character = {
-					success_symbol = "[\\$](bold green)";
-					error_symbol = "[\\$](bold red)";
+					success_symbol = "[❯](bold green)";
+					error_symbol = "[❯](bold red)";
 				};
 			};
-		};
-		
-		bash = {
-			enable = true;
-	    shellAliases = {
-				sshcse = "ssh z5588665@login.cse.unsw.edu.au";
-				# TODO REMOVE:
-				mipsy = "~/mipsy/target/debug/mipsy";
-	    };
 		};
 
 		neovim = 
@@ -237,6 +255,7 @@
 
 		kitty = {
 			enable = true;
+			shellIntegration.enableZshIntegration = true;
 			theme = "Catppuccin-Macchiato";
 			settings = {
 				enable_audio_bell = false;
