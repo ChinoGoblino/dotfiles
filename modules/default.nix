@@ -68,12 +68,12 @@
   users.groups.storage = {};
   users.users.chino = {
 		isNormalUser = true;
-		shell = pkgs.zsh;
 		description = "Ethan Scott";
 		extraGroups = [ "networkmanager" "wheel"];
 		packages = with pkgs; [];
   };
 	programs.zsh.enable = true;
+	users.defaultUserShell = pkgs.zsh;
 
   environment.variables = {
 		EDITOR = "nvim";
@@ -89,8 +89,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
 		neovim
 		wget
@@ -102,14 +100,19 @@
 	
 		traceroute
 		netperf
-		# nslookup, dig
 		dnsutils
 
 		clang
 		cargo
 		gnumake
 		python3
+		kubectl
   ];
+
+	system.autoUpgrade = {
+		enable = true;
+		channel = "https://channels.nixos.org/nixos-24.05";
+	};
 
   fonts.packages = with pkgs; [
 		font-awesome
@@ -128,6 +131,7 @@
 		pulse.enable = true;
   };
 
+	# Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
@@ -143,12 +147,7 @@
 		};
   };
 
+	# Unlock keyring
   security.pam.services.greetd.enableGnomeKeyring = true;
 	services.gnome.gnome-keyring.enable = true;
-
-  environment.etc.inputrc = {
-		text = ''
-	    set completion-ignore-case on
-		'';
-	};
 }

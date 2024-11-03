@@ -39,6 +39,7 @@
 		playerctl
 		starship
 
+		ferdium
 		xarchiver
 		libreoffice
 		nemo
@@ -59,6 +60,10 @@
 		./hyprland.nix
   ];
 
+	home.file.".kube/config" = {
+		source = ./kube/config.yml;
+	};
+
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -73,6 +78,8 @@
 		#   org.gradle.daemon.idletimeout=3600000
 		# '';
   };
+
+
 
   services.syncthing = {
 		enable = true;
@@ -175,6 +182,12 @@
 				autoload -Uz compinit && compinit
 				zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 				zstyle ':completion:*' menu select
+
+				bindkey '^F' autosuggest-accept
+
+				# Fix backspacing non-inserted characters in vim insert mode
+				bindkey "^H" backward-delete-char
+				bindkey "^?" backward-delete-char
 
 				zmodload zsh/complist
 				bindkey -M menuselect 'h' vi-backward-char
