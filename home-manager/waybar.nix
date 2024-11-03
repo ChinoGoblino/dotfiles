@@ -52,12 +52,13 @@ in
 				};
 				"battery" = {
 					bat = "BAT0";
-					interval = 60;
+					interval = 5;
 					states = {
 						warning = 30;
 						critical = 15;
 					};
 					format = "{capacity}% {icon}";
+					format-charging = "{capacity}% ";
 					format-icons = ["" "" "" "" ""];
 				};
 				"network" = {
@@ -159,10 +160,6 @@ in
 
 			#battery {
 				color: #83a598;
-			}
-
-			#battery.charging {
-				color: #81a1c1;
 			}
 
 			@keyframes blink {
