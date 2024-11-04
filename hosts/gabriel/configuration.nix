@@ -23,6 +23,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 		brightnessctl
+		kicad
   ];
 
 	powerManagement.enable = true;

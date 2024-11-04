@@ -99,6 +99,7 @@
 		wl-clipboard
 		unzip
 		man-pages
+		powertop
 	
 		traceroute
 		netperf
