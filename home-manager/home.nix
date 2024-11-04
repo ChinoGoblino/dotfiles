@@ -53,16 +53,16 @@
 		wireshark
 		thunderbird
 		protonmail-bridge
+
+		kubectl
+		k9s
+		kubectx
 	];
 
 	imports = [
 		./waybar.nix
 		./hyprland.nix
   ];
-
-	home.file.".kube/config" = {
-		source = ./kube/config.yml;
-	};
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -139,6 +139,10 @@
 			tofi_cache=${config.xdg.cacheHome}/tofi-drun
 	    [[ -f "$tofi_cache" ]] && rm "$tofi_cache"
 	  '';
+		customCommands = lib.mkAfter ''
+			mkdir -p ${config.home.homeDirectory}/.kube
+			cp /etc/nixos/home-manager/kube/config.yml ${config.home.homeDirectory}/.kube/config
+		'';
   };
 
   gtk = {
@@ -172,6 +176,9 @@
 
 			shellAliases = {
 				update = "sudo nixos-rebuild switch --flake /etc/nixos";
+				kctl = "kubectl";
+				kns = "kubens";
+				ktx = "kubectx";
 
 				# TODO REMOVE:
 				mipsy = "~/mipsy/target/debug/mipsy";

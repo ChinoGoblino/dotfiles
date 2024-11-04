@@ -32,14 +32,14 @@
   hardware.graphics.enable32Bit = true;
   hardware.pulseaudio.support32Bit = true;
 
-	virtualisation.docker = {
-		enable = true;
-		rootless = {
-			enable = true;
-			setSocketVariable = true;
-		};
-	};
-	users.users.chino.extraGroups = [ "docker" ];
+#	virtualisation.docker = {
+#		enable = true;
+#		rootless = {
+#			enable = true;
+#			setSocketVariable = true;
+#		};
+#	};
+#	users.users.chino.extraGroups = [ "docker" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

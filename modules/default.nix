@@ -106,7 +106,6 @@
 		cargo
 		gnumake
 		python3
-		kubectl
   ];
 
 	system.autoUpgrade = {

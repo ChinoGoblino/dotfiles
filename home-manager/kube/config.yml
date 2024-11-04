@@ -30,3 +30,4 @@ users:
     client-certificate: /home/chino/certs/devsoc/client-certificate.crt
     client-key: /home/chino/certs/devsoc/client-key.key
 
+  # crts and keys are base64 encoded. Found at /etc/rancher/k3s/k3s.yaml
