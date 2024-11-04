@@ -39,6 +39,7 @@
 		playerctl
 		starship
 
+		ferdium
 		xarchiver
 		libreoffice
 		nemo
@@ -52,6 +53,10 @@
 		wireshark
 		thunderbird
 		protonmail-bridge
+
+		kubectl
+		k9s
+		kubectx
 	];
 
 	imports = [
@@ -73,6 +78,8 @@
 		#   org.gradle.daemon.idletimeout=3600000
 		# '';
   };
+
+
 
   services.syncthing = {
 		enable = true;
@@ -132,6 +139,10 @@
 			tofi_cache=${config.xdg.cacheHome}/tofi-drun
 	    [[ -f "$tofi_cache" ]] && rm "$tofi_cache"
 	  '';
+		customCommands = lib.mkAfter ''
+			mkdir -p ${config.home.homeDirectory}/.kube
+			cp /etc/nixos/home-manager/kube/config.yml ${config.home.homeDirectory}/.kube/config
+		'';
   };
 
   gtk = {
@@ -165,6 +176,9 @@
 
 			shellAliases = {
 				update = "sudo nixos-rebuild switch --flake /etc/nixos";
+				kctl = "kubectl";
+				kns = "kubens";
+				ktx = "kubectx";
 
 				# TODO REMOVE:
 				mipsy = "~/mipsy/target/debug/mipsy";
@@ -175,6 +189,12 @@
 				autoload -Uz compinit && compinit
 				zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 				zstyle ':completion:*' menu select
+
+				bindkey '^F' autosuggest-accept
+
+				# Fix backspacing non-inserted characters in vim insert mode
+				bindkey "^H" backward-delete-char
+				bindkey "^?" backward-delete-char
 
 				zmodload zsh/complist
 				bindkey -M menuselect 'h' vi-backward-char
