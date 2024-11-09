@@ -25,8 +25,9 @@
   # Allow remote ssh / scp
   services.openssh = {
 		enable = true;
-		settings.PasswordAuthentication = true;
-		settings.KbdInteractiveAuthentication = false;
+		permitRootLogin = "no";
+		settings.PasswordAuthentication = false;
+		settings.KbdInteractiveAuthentication = true;
   };
 
   users.users.chino.openssh.authorizedKeys.keyFiles = [
