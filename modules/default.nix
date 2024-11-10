@@ -20,14 +20,15 @@
 		enable = true;
   };
 
-  networking.networkmanager.enable = true;
-
   # Allow remote ssh / scp
   services.openssh = {
 		enable = true;
-		permitRootLogin = "no";
-		settings.PasswordAuthentication = false;
-		settings.KbdInteractiveAuthentication = true;
+		settings = {
+			PermitRootLogin = "no";
+			PasswordAuthentication = true;
+			KbdInteractiveAuthentication = false;
+			AuthenticationMethods = "publickey,password";
+		};
   };
 
   users.users.chino.openssh.authorizedKeys.keyFiles = [
@@ -36,6 +37,7 @@
 
 	services.flatpak.enable = true;
 	xdg.portal.enable = true;
+  xdg.portal.config.common.default = "*";
 	systemd.services.flatpak-repo = {
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.flatpak ];
@@ -43,6 +45,11 @@
 			flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     '';
   };
+
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
