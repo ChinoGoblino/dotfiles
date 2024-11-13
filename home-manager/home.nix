@@ -181,7 +181,6 @@
 				kctl = "kubectl";
 				kns = "kubens";
 				ktx = "kubectx";
-				# TODO Make this a make option
 				nix-shell = "nix-shell --command zsh";
 
 				# TODO REMOVE:

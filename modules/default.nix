@@ -46,6 +46,17 @@
     '';
   };
 
+	# STM32CubeIDE udev rule
+	services.udev.packages = [
+		(pkgs.writeTextFile {
+			name = "stm32_udev";
+			text = ''
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="users", MODE="0666"
+			'';
+			destination = "/etc/udev/rules.d/50-stm32.rules";
+		})
+	];
+
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
