@@ -45,8 +45,8 @@
 		nemo
 		obsidian #unfree
 		vesktop #unfree-backend
-		element-desktop
 		firefox
+		element-desktop
 		kitty
 		gimp
 		pwvucontrol
@@ -57,11 +57,13 @@
 		kubectl
 		k9s
 		kubectx
+		colmena
 	];
 
 	imports = [
 		./waybar.nix
 		./hyprland.nix
+    ./nvim.nix
   ];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -227,43 +229,6 @@
 					error_symbol = "[❯](bold red)";
 				};
 			};
-		};
-
-		neovim = 
-		let
-			# Makes lua specific syntax easier to read below
-			toLua = str: "lua << EOF\n${str}\nEOF\n";
-			toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-		in
-		{
-	    enable = true;
-	    viAlias = true;
-	    vimAlias = true;
-	    vimdiffAlias = true;
-	    plugins = with pkgs.vimPlugins; [
-				{
-					plugin = catppuccin-nvim;
-					config = "colorscheme catppuccin-macchiato";
-				}
-				# Pretty bottom status bar
-				{
-					plugin = lualine-nvim;
-					config = toLuaFile ./nvim/lualine.lua;
-				}
-				# Tree sidebar
-				{
-					plugin = nvim-tree-lua;
-					config = toLuaFile ./nvim/nvimtree.lua;
-				}
-				# File icons
-				{
-					plugin = nvim-web-devicons;
-				}
-	    ];
-			extraLuaConfig = ''
-				${builtins.readFile ./nvim/init.lua}
-				${builtins.readFile ./nvim/options.lua}
-			'';
 		};
 
 		git = {

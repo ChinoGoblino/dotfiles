@@ -4,6 +4,7 @@ set.relativenumber = true
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
+set.expandtab = true				-- make tabs spaces so formatting consistent across all platforms
 set.clipboard = "unnamedplus"
 
 set.laststatus = 3
