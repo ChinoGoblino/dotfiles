@@ -14,6 +14,13 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
   # The home.packages option allows you to install Nix packages into your
   # environment.
+
+	imports = [
+		./waybar.nix
+		./hyprland.nix
+    ./nvim.nix
+    ./firefox.nix
+  ];
     
   nixpkgs.config.allowUnfree = true;
 
@@ -45,7 +52,6 @@
 		nemo
 		obsidian #unfree
 		vesktop #unfree-backend
-		firefox
 		element-desktop
 		kitty
 		gimp
@@ -58,13 +64,8 @@
 		k9s
 		kubectx
 		colmena
+    spotdl
 	];
-
-	imports = [
-		./waybar.nix
-		./hyprland.nix
-    ./nvim.nix
-  ];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

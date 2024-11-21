@@ -28,6 +28,12 @@
 			fsType = "ext4";
 	};
 
+  fileSystems."/media/media" = {
+    device = "exodus.lan:/mnt/media";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
   # Steam requires 32 bit
   hardware.graphics.enable32Bit = true;
   hardware.pulseaudio.support32Bit = true;

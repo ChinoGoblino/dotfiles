@@ -34,6 +34,8 @@ in {
         plugin = nvim-treesitter.withPlugins (ps: with ps; [
           c
           nix
+          yaml
+          comment
         ]);
         config = toLuaFile ./nvim/treesitter.lua;
       }

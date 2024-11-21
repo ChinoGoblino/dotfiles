@@ -8,6 +8,10 @@ clusters:
   cluster:
     certificate-authority: /home/chino/certs/homelab/certificate-authority.crt
     server: https://192.168.86.38:6443
+- name: wheatley
+  cluster:
+    certificate-authority: /home/chino/certs/homelab/certificate-authority.crt
+    server: https://wheatley.cse.unsw.edu.au:7654
 contexts:
 - context:
     cluster: devsoc
@@ -17,6 +21,10 @@ contexts:
     cluster: homelab
     user: chino
   name: homelab
+- context:
+    cluster: wheatley
+    user: ethan-wheetly
+  name: wheatley
 current-context: homelab
 kind: Config
 preferences: {}
@@ -29,5 +37,10 @@ users:
   user:
     client-certificate: /home/chino/certs/devsoc/client-certificate.crt
     client-key: /home/chino/certs/devsoc/client-key.key
+- name: ethan-wheetly
+  user:
+    client-certificate: /home/chino/certs/wheatley/client-certificate.crt
+    client-key: /home/chino/certs/wheatley/client-key.key
 
-  # crts and keys are base64 encoded. Found at /etc/rancher/k3s/k3s.yaml
+  # crts and keys are base64 encoded and found at /etc/rancher/k3s/k3s.yaml.
+  # They must be decoded before uploading to the specific files.
