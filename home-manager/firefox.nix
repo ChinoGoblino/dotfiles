@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
 	programs.firefox = {	
@@ -42,13 +42,17 @@
         };
       };
 
-    # FIXME
+      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+        bitwarden
+        ublock-origin
+        vimium
+      ];
+
+      # TODO: Make more elegant
    #   extensions = with pkgs.firefox-addons; [
    #     bitwarden
    #     ublock-origin
    #     vimium
-   #     socialfocus
-   #     decentraleyes
    #   ];
     };
 

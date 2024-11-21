@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }:
 
 {  
-	home.username = "chino";
+  home.username = "chino";
 	home.homeDirectory = "/home/chino";
   
   # This value determines the Home Manager release that your configuration is
@@ -134,6 +134,7 @@
   #
   home.sessionVariables = {
 		NIXOS_OZONE_WL = "1";   
+    NIXPKGS_ALLOW_UNFREE = "1";
   };
 
   home.activation = {
