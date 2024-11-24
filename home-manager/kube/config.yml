@@ -10,21 +10,29 @@ clusters:
     server: https://192.168.86.38:6443
 - name: wheatley
   cluster:
-    certificate-authority: /home/chino/certs/homelab/certificate-authority.crt
-    server: https://wheatley.cse.unsw.edu.au:7654
+    certificate-authority: /home/chino/certs/wheatley/certificate-authority.crt
+    server: https://wheatley.cse.unsw.edu.au:7654/
+- name: rocketry
+  cluster:
+    certificate-authority: /home/chino/certs/rocketry/certificate-authority.crt
+    server: https://51.161.162.49:6443
 contexts:
-- context:
+- name: devsoc
+  context:
     cluster: devsoc
     user: ethan
-  name: devsoc
-- context:
+- name: homelab
+  context:
     cluster: homelab
     user: chino
-  name: homelab
-- context:
+- name: wheatley
+  context:
     cluster: wheatley
-    user: ethan-wheetly
-  name: wheatley
+    user: ethan-wheatly
+- name: rocketry
+  context:
+    cluster: rocketry
+    user: ethan-rocketry
 current-context: homelab
 kind: Config
 preferences: {}
@@ -37,10 +45,14 @@ users:
   user:
     client-certificate: /home/chino/certs/devsoc/client-certificate.crt
     client-key: /home/chino/certs/devsoc/client-key.key
-- name: ethan-wheetly
+- name: ethan-wheatly
   user:
     client-certificate: /home/chino/certs/wheatley/client-certificate.crt
     client-key: /home/chino/certs/wheatley/client-key.key
+- name: ethan-rocketry
+  user:
+    client-certificate: /home/chino/certs/rocketry/client-certificate.crt
+    client-key: /home/chino/certs/rocketry/client-key.key
 
   # crts and keys are base64 encoded and found at /etc/rancher/k3s/k3s.yaml.
   # They must be decoded before uploading to the specific files.

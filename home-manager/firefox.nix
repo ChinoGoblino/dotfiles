@@ -33,8 +33,8 @@
 
           "NixOS Wiki" = {
             urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
-            iconUpdateURL = "https://wiki.nixos.org/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
+
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nw" ];
           };
 
@@ -49,11 +49,11 @@
       ];
 
       # TODO: Make more elegant
-   #   extensions = with pkgs.firefox-addons; [
-   #     bitwarden
-   #     ublock-origin
-   #     vimium
-   #   ];
+ #     extensions = with pkgs.inputs.firefox-addons; [
+ #       bitwarden
+ #       ublock-origin
+ #       vimium
+ #     ];
     };
 
     # Check about:policies for options
@@ -77,6 +77,7 @@
       HttpsOnlyMode = "enabled";
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
+      SearchSuggestEnabled = false;
       FirefoxSuggest = {
         WebSuggestions = false;
         SponsoredSuggestions = false;
@@ -85,11 +86,22 @@
       DNSOverHTTPS = {
         Enabled = true;
       };
-      SearchSuggestEnabled = false;
+      FirefoxHome = {
+        SponsoredTopSites = false;
+        SponsoredPocked = false;
+      };
 
       # Check about:config for options
       Preferences = {
           "browser.startup.page" = 3;   # Save tabs on startup
+      };
+
+      # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
+      ExtensionSettings = {
+        "{15cb5e64-94bd-41aa-91cf-751bb1a84972}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-macchiato-lavender2/latest.xpi";
+          installation_mode = "force_installed";
+        };
       };
     };
   };

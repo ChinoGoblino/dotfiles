@@ -25,7 +25,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-		dconf
+    dconf
 		syncthingtray
 		papirus-icon-theme
 		networkmanagerapplet
@@ -33,7 +33,6 @@
 		dunst
 		pasystray
 		trayer
-		tofi
 		grim
 		slurp
 		swaylock
@@ -44,16 +43,14 @@
 		neofetch
 		mc
 		playerctl
-		starship
 
 		ferdium
 		xarchiver
 		libreoffice
 		nemo
 		obsidian #unfree
-		vesktop #unfree-backend
+	#	vesktop #unfree-backend
 		element-desktop
-		kitty
 		gimp
 		pwvucontrol
 		wireshark
@@ -65,6 +62,7 @@
 		kubectx
 		colmena
     spotdl
+    kustomize
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -180,7 +178,7 @@
 
 			shellAliases = {
 				update = "sudo nixos-rebuild switch --flake /etc/nixos";
-				kctl = "kubectl";
+				k = "kubectl";
 				kns = "kubens";
 				ktx = "kubectx";
 				nix-shell = "nix-shell --command zsh";
