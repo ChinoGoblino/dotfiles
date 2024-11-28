@@ -7,6 +7,8 @@
 		colmena
     spotdl
     kustomize
+    kubernetes-helm
+    helmfile
 	];
 
   imports = [

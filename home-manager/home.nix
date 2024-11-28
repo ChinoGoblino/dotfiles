@@ -249,7 +249,7 @@
 		kitty = {
 			enable = true;
 			shellIntegration.enableZshIntegration = true;
-			theme = "Catppuccin-Macchiato";
+			themeFile = "Catppuccin-Macchiato";
 			settings = {
 				enable_audio_bell = false;
 				scrollback_lines = 10000;
