@@ -18,12 +18,12 @@ in {
       # Pretty bottom status bar
       {
         plugin = lualine-nvim;
-        config = toLuaFile ./nvim/lualine.lua;
+        config = toLuaFile ./lualine.lua;
       }
       # Tree sidebar
       {
         plugin = nvim-tree-lua;
-        config = toLuaFile ./nvim/nvimtree.lua;
+        config = toLuaFile ./nvimtree.lua;
       }
       # File icons
       {
@@ -37,12 +37,12 @@ in {
           yaml
           comment
         ]);
-        config = toLuaFile ./nvim/treesitter.lua;
+        config = toLuaFile ./treesitter.lua;
       }
     ];
     extraLuaConfig = ''
-      ${builtins.readFile ./nvim/init.lua}
-      ${builtins.readFile ./nvim/options.lua}
+      ${builtins.readFile ./init.lua}
+      ${builtins.readFile ./options.lua}
     '';
 	};
 }

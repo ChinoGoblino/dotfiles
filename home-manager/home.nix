@@ -18,7 +18,7 @@
 	imports = [
 		./waybar.nix
 		./hyprland.nix
-    ./nvim.nix
+    ./nvim/nvim.nix
     ./firefox.nix
     ./k8s/k8s.nix
   ];
@@ -104,26 +104,11 @@
 		};
 	};
 
-  
-
 	# Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/chino/etc/profile.d/hm-session-vars.sh
-  #
+  # shell provided by Home Manager.
   home.sessionVariables = {
-		NIXOS_OZONE_WL = "1";   
+		NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_UNFREE = "1";
   };
 
@@ -202,6 +187,7 @@
 				kns = "kubens";
 				ktx = "kubectx";
 				nix-shell = "nix-shell --command zsh";
+        ssh = "kitten ssh";
 
 				# TODO REMOVE:
 				mipsy = "~/mipsy/target/debug/mipsy";
@@ -285,5 +271,5 @@
 				hide-cursor      = true;
 			};
 		};
-	};
+  };
 }

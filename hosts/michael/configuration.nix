@@ -29,7 +29,13 @@
 	};
 
   fileSystems."/media/media" = {
-    device = "exodus.lan:/mnt/media";
+    device = "exodus.lan:/volumes/media";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
+  fileSystems."/media/backup" = {
+    device = "exodus.lan:/volumes/payload";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };

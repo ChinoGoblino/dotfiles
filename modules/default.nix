@@ -109,7 +109,6 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 		EDITOR = "nvim";
 		GDK_BACKEND = "wayland,x11";
 		MOZ_ENABLE_WAYLAND = "1";
-		XDG_CURRENT_DESKTOP = "hyprland";
 		XDG_SESSION_DESKTOP = "hyprland";
 		QT_QPA_PLATFORM = "wayland";
 		_JAVA_AWT_WM_NONREPARENTING = "1";
@@ -141,7 +140,12 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 
 	system.autoUpgrade = {
 		enable = true;
-		channel = "https://channels.nixos.org/nixos-24.05";
+    flake = inputs.self.outPath;
+    flags = [
+      "--update=input"
+      "nixpkgs"
+      "-L"
+    ];
 	};
 
   fonts.packages = with pkgs; [
@@ -171,7 +175,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 		enable = true;
 		settings = {
 	    default_session = {
-				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
 				user = "greeter";
 	    };
 		};
