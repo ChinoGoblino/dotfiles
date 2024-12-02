@@ -39,6 +39,7 @@
           };
 
           "Bing".metaData.hidden = true;
+          "Google".metaData.alias = "@g";
         };
       };
 

@@ -16,11 +16,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  # networking.networkmanager.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
 		brightnessctl
 		kicad
@@ -30,14 +25,6 @@
 	
 	virtualisation.virtualbox.host.enable = true;
 	users.extraGroups.vboxusers.members = [ "chino" ];
-
-	#virtualisation.docker = {
-	#	enable = true;
-	#	rootless = {
-	#		enable = true;
-	#		setSocketVariable = true;
-	#	};
-	#};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
