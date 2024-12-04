@@ -84,11 +84,11 @@
       };
       folders = {
         "Obsidian" = {
-          path = "${config.home.homeDirectory}/unsw";
+          path = "${config.home.homeDirectory}/Documents/Obsidian";
           devices = [ "gabriel" "raphael" "michael" ];
         };
         "UNSW" = {
-          path = "${config.home.homeDirectory}/Documents/Obsidian";
+          path = "${config.home.homeDirectory}/unsw";
           devices = [ "gabriel" "michael" ];
         };
       };
