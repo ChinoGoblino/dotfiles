@@ -98,7 +98,6 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
   users.groups.storage = {};
   users.users.chino = {
 		isNormalUser = true;
-		description = "Ethan Scott";
 		extraGroups = [ "networkmanager" "wheel"];
 		packages = with pkgs; [];
   };

@@ -48,7 +48,7 @@
 		libreoffice
 		nemo
 		obsidian #unfree
-	#	vesktop #unfree-backend
+		vesktop #unfree-backend
 		element-desktop
 		gimp
 		pwvucontrol
