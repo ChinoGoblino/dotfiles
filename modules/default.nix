@@ -120,7 +120,6 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
   environment.systemPackages = with pkgs; [
 		neovim
 		wget
-		git
 		home-manager
 		wl-clipboard
 		unzip

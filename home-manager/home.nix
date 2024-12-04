@@ -238,7 +238,7 @@
 
 		git = {
 			enable = true;
-			userName = "chinoGoblino";
+			userName = "ChinoGoblino";
 			userEmail = "general@ethonium.com";
 			extraConfig = {
 				init.defaultBranch = "main";
