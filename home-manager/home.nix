@@ -47,6 +47,7 @@
 		xarchiver
 		libreoffice
 		nemo
+    signal-desktop
 		obsidian #unfree
 		vesktop #unfree-backend
 		element-desktop
