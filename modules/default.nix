@@ -100,7 +100,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
   users.groups.storage = {};
   users.users.chino = {
 		isNormalUser = true;
-		extraGroups = [ "networkmanager" "wheel"];
+		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [];
   };
 	programs.zsh.enable = true;
