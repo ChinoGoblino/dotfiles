@@ -26,13 +26,13 @@
 	};
 
   fileSystems."/media/media" = {
-    device = "exodus.lan:/volumes/media";
+    device = "192.168.86.38:/volumes/media";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
 
   fileSystems."/media/backup" = {
-    device = "exodus.lan:/volumes/payload";
+    device = "192.168.86.38:/volumes/payload";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
