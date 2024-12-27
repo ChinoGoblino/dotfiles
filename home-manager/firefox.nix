@@ -10,12 +10,12 @@
 
       search = {
         force = true;
-        default = "Brave";
-        order = [ "Brave" ];
+        default = "Startpage";
+        order = [ "Startpage" ];
         engines = {
-          "Brave" = {
-            urls = [{ template = "https://search.brave.com/search?q={searchTerms}"; }];
-            definedAliases = [ "@b" ];
+          "Startpage" = {
+            urls = [{ template = "https://www.startpage.com/sp/search?q={searchTerms}"; }];
+            definedAliases = [ "@s" ];
           };  
 
           "Nix Packages" = {
