@@ -251,6 +251,26 @@
 					success_symbol = "[❯](bold green)";
 					error_symbol = "[❯](bold red)";
 				};
+        cmd_duration = {
+          disabled = true;
+        };
+        kubernetes = {
+          disabled = false;
+          format = "[$symbol \(in $namespace \)]($style)";
+          contexts = [{
+            context_pattern = "homelab";
+            style = "#c6a0f6";
+            symbol = "  ";
+          } {
+            context_pattern = "devsoc";
+            style = "#8aadf4";
+            symbol = "  ";
+          } {
+            context_pattern = "rocketry";
+            style = "#ed8796";
+            symbol = "  ";
+          }];
+        };
 			};
 		};
 
