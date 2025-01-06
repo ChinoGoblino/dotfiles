@@ -16,33 +16,26 @@
   # environment.
 
 	imports = [
-		./waybar.nix
-		./hyprland.nix
-    ./nvim/nvim.nix
-    ./firefox.nix
-    ./starship.nix
-    ./k8s/k8s.nix
+		./modules/waybar.nix
+		./modules/hyprland.nix
+    ./modules/nvim/nvim.nix
+    ./modules/firefox.nix
+    ./modules/starship.nix
+    ./modules/k8s/k8s.nix
   ];
     
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
     dconf
-		syncthingtray
+    syncthing
 		papirus-icon-theme
-		networkmanagerapplet
-		waybar
-		pasystray
 		trayer
-		grim
-		slurp
 		swaylock
-		swappy
 		swww
 
 		htop
 		neofetch
-		playerctl
 
 		ferdium
 		xarchiver
@@ -139,7 +132,7 @@
 	  '';
 		customCommands = lib.mkAfter ''
 			mkdir -p ${config.home.homeDirectory}/.kube
-			cp /etc/nixos/home-manager/kube/config.yml ${config.home.homeDirectory}/.kube/config
+			cp /etc/nixos/home-manager/modules/k8s/config.yml ${config.home.homeDirectory}/.kube/config
 		'';
   };
 
