@@ -35,6 +35,7 @@ in {
           c
           nix
           yaml
+          go
           comment
         ]);
         config = toLuaFile ./treesitter.lua;

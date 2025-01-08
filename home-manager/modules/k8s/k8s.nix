@@ -7,8 +7,15 @@
 		colmena
     spotdl
     kustomize
-    kubernetes-helm
     helmfile
+    (wrapHelm kubernetes-helm {
+      plugins = with pkgs.kubernetes-helmPlugins; [
+        helm-secrets
+        helm-diff
+        helm-s3
+        helm-git
+      ];
+    }) 
 	];
 
   imports = [

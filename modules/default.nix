@@ -186,4 +186,14 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 	# Unlock keyring
   security.pam.services.greetd.enableGnomeKeyring = true;
 	services.gnome.gnome-keyring.enable = true;
+
+  # Podman as drop in replacement for docker
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      # 'docker' alias for podman
+      dockerCompat = true;
+    };
+  };
 }
