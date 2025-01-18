@@ -47,6 +47,7 @@
         bitwarden
         ublock-origin
         vimium
+        simplelogin
       ];
 
       # TODO: Make more elegant

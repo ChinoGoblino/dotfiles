@@ -131,6 +131,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 		traceroute
 		netperf
 		dnsutils
+    xh
 
 		clang
 		cargo
