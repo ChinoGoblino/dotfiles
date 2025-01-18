@@ -137,8 +137,6 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="use
 		cargo
 		gnumake
 		python3
-  ] ++ [
-    inputs.ghostty.packages.x86_64-linux.default
   ];
 
 	system.autoUpgrade = {
