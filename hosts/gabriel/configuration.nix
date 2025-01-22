@@ -22,9 +22,6 @@
   ];
 
 	powerManagement.enable = true;
-	
-	virtualisation.virtualbox.host.enable = true;
-	users.extraGroups.vboxusers.members = [ "chino" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
