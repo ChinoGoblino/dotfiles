@@ -46,6 +46,7 @@
 		vesktop #unfree-backend
 		element-desktop
 		gimp
+    sdrangel
 		pwvucontrol
 		wireshark
 		thunderbird

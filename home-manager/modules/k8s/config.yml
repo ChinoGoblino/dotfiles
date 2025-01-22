@@ -7,7 +7,7 @@ clusters:
 - name: homelab
   cluster:
     certificate-authority: /home/chino/certs/homelab/certificate-authority.crt
-    server: https://192.168.86.38:6443
+    server: https://192.168.1.129:6443
 - name: wheatley
   cluster:
     certificate-authority: /home/chino/certs/wheatley/certificate-authority.crt
