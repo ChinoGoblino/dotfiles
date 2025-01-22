@@ -2,18 +2,20 @@
 
 {
 	# Bootloader.
-  boot.loader = {
-		efi = {
-	    canTouchEfiVariables = true;
-	    efiSysMountPoint = "/boot";
-		};
-		
-		grub = {
-  	  enable = true;
-  	  device = "nodev";
-  	  useOSProber = true;
-  	  efiSupport = true;
-		};
+  boot = {
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+    };
   };
 
   hardware.graphics = {
@@ -47,7 +49,7 @@
     '';
   };
 
-	# STM32CubeIDE udev rule
+	# udev rules
 	services.udev.packages = [
 		(pkgs.writeTextFile {
 			name = "stm32_udev";
@@ -163,16 +165,6 @@ KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}==
 		python3
   ];
 
-	system.autoUpgrade = {
-		enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update=input"
-      "nixpkgs"
-      "-L"
-    ];
-	};
-
   fonts.packages = with pkgs; [
 		font-awesome
 		fira-code
@@ -181,7 +173,7 @@ KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}==
 	# kdeconnect
 	programs.kdeconnect.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
 		enable = true;
@@ -198,11 +190,13 @@ KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}==
   # Greeter
   services.greetd = { 
 		enable = true;
-		settings = {
-	    default_session = {
-				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+		settings = rec {
+	    initial_session = {
+				#command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+				command = "Hyprland";
 				user = "chino";
 	    };
+      default_session = initial_session;
 		};
   };
 
