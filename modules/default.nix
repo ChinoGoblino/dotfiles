@@ -158,6 +158,7 @@ KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}==
 		netperf
 		dnsutils
     xh
+    nmap
 
 		clang
 		cargo

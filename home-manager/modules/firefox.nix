@@ -48,6 +48,8 @@
         ublock-origin
         vimium
         simplelogin
+        leechblock-ng
+        nighttab
       ];
 
       # TODO: Make more elegant

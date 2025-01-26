@@ -38,6 +38,7 @@
 		neofetch
 
 		ferdium
+    mpv
 		xarchiver
 		libreoffice
 		nemo

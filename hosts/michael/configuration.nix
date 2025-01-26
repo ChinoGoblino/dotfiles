@@ -26,13 +26,13 @@
 	};
 
   fileSystems."/media/media" = {
-    device = "192.168.86.51:/volumes/media";
+    device = "192.168.1.129:/volumes/media";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
 
   fileSystems."/media/backup" = {
-    device = "192.168.86.51:/volumes/payload";
+    device = "192.168.1.129:/volumes/payload";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
   };
