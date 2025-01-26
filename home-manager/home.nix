@@ -19,7 +19,7 @@
 		./modules/waybar.nix
 		./modules/hyprland.nix
     ./modules/nvim/nvim.nix
-    ./modules/firefox.nix
+    ./modules/firefox/firefox.nix
     ./modules/starship.nix
     ./modules/k8s/k8s.nix
   ];
