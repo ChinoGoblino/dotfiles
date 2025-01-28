@@ -49,9 +49,11 @@
 		gimp
     sdrangel
 		pwvucontrol
-		wireshark
+    termshark
 		thunderbird
 		protonmail-bridge
+    
+    tradingview
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -207,6 +209,7 @@
 				ktx = "kubectx";
 				nix-shell = "nix-shell --command zsh";
         ssh = "kitten ssh";
+        wireshark = "sudo termshark";
 
 				# TODO REMOVE:
 				mipsy = "~/mipsy/target/debug/mipsy";
