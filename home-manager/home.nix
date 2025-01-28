@@ -16,12 +16,16 @@
   # environment.
 
 	imports = [
+    ./modules/syncthing.nix
 		./modules/waybar.nix
 		./modules/hyprland.nix
+    ./modules/dunst.nix
+
     ./modules/nvim/nvim.nix
     ./modules/firefox/firefox.nix
     ./modules/starship.nix
     ./modules/k8s/k8s.nix
+    ./modules/zsh.nix
   ];
     
   nixpkgs.config.allowUnfree = true;
@@ -75,27 +79,6 @@
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
       uris = ["qemu:///system"];
-    };
-  };
-
-  services.syncthing = {
-		enable = true;
-    settings = {
-      devices = {
-        "raphael" = { id = "Z2CU7Q6-PSHUE4T-LVRDYH4-KDADA43-TIGQ6QJ-LGX36Q3-EUML2MI-3GQ35AD"; };
-        "gabriel" = { id = "ABMFAT3-IPNNMZP-W2BUFHC-GSQPPBJ-AG7BPJV-YJZBGWN-6USI2YW-3VUKLAB"; };
-        "michael" = { id = "VUTC7AY-PAPVSOQ-KRZQGX6-K537K7M-FWJGI7C-TCPFZMF-WANMFPU-QDRJMAG"; };
-      };
-      folders = {
-        "Obsidian" = {
-          path = "${config.home.homeDirectory}/Documents/Obsidian";
-          devices = [ "gabriel" "raphael" "michael" ];
-        };
-        "UNSW" = {
-          path = "${config.home.homeDirectory}/unsw";
-          devices = [ "gabriel" "michael" ];
-        };
-      };
     };
   };
 
@@ -166,76 +149,7 @@
    };
   };
 
-  services.dunst = {
-    enable = true;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
-    };
-    settings = {
-      global = {
-        follow = "mouse";
-        frame_color = "#8aadf4";
-        separator_color= "frame";
-      };
-      urgency_low = {
-        background = "#24273a";
-        foreground = "#cad3f5";
-      };
-      urgency_normal = {
-        background = "#24273a";
-        foreground = "#cad3f5";
-      };
-      urgency_critical = {
-        background = "#24273a";
-        foreground = "#cad3f5";
-        frame_color = "#f5a97f";
-      };
-    };
-  };
-
 	programs = {
-		zsh = {
-			enable = true;
-			defaultKeymap = "viins";
-			enableCompletion = true;
-			autosuggestion.enable = true;
-			syntaxHighlighting.enable = true;
-
-			shellAliases = {
-				update = "sudo nixos-rebuild switch --flake /etc/nixos";
-				k = "kubectl";
-				kns = "kubens";
-				ktx = "kubectx";
-				nix-shell = "nix-shell --command zsh";
-        ssh = "kitten ssh";
-        wireshark = "sudo termshark";
-
-				# TODO REMOVE:
-				mipsy = "~/mipsy/target/debug/mipsy";
-				sshcse = "ssh z5588665@login.cse.unsw.edu.au";
-			};
-			initExtra = ''
-				# Case Insensitive autocomplete
-				autoload -Uz compinit && compinit
-				zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-				zstyle ':completion:*' menu select
-
-				bindkey '^F' autosuggest-accept
-
-				# Fix backspacing non-inserted characters in vim insert mode
-				bindkey "^H" backward-delete-char
-				bindkey "^?" backward-delete-char
-
-				zmodload zsh/complist
-				bindkey -M menuselect 'h' vi-backward-char
-				bindkey -M menuselect 'k' vi-up-line-or-history
-				bindkey -M menuselect 'l' vi-forward-char
-				bindkey -M menuselect 'j' vi-down-line-or-history
-			'';
-		};
-
-
 		git = {
 			enable = true;
 			userName = "ChinoGoblino";
