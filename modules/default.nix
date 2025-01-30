@@ -20,6 +20,7 @@
 
   imports = [
     ./udev.nix
+    ./hosts.nix
   ];
 
   hardware.graphics = {
