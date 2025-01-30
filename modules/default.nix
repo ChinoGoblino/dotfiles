@@ -12,7 +12,7 @@
       grub = {
         enable = true;
         device = "nodev";
-        useOSProber = true;
+        # useOSProber = true;       # Enable when needed. Slows things down
         efiSupport = true;
       };
     };
