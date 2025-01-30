@@ -22,6 +22,10 @@
     system = "x86_64-linux";  
     pkgs = nixpkgs.legacyPackages.${system};
   in {
+    # TODO: tastytrade
+    packages.${system}.tastytrade = pkgs.callPackage ./tastytrade.nix { };
+    defaultPackage.${system} = self.packages.${system}.tastytrade;
+
     nixosConfigurations = {
       gabriel = nixpkgs.lib.nixosSystem {
         system = system;
@@ -30,6 +34,7 @@
         modules = [
           ./hosts/gabriel/configuration.nix
           ./modules
+
 					home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.chino = {

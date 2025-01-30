@@ -20,6 +20,7 @@
       # TODO REMOVE:
       mipsy = "~/mipsy/target/debug/mipsy";
       sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+      tastytrade = "/etc/nixos/result/bin/tastytrade";
     };
     initExtra = ''
       # Case Insensitive autocomplete
