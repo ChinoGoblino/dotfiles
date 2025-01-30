@@ -2,13 +2,10 @@
 
 { 
   networking.extraHosts = ''
-    192.168.1.139   michael
-    192.168.1.124   gabriel
+    192.168.1.139   exodus
 
-    192.168.1.129   exodus
-
-    51.161.198.241  devnode1 
-    51.161.199.191  devnode2 
+    51.161.198.241  devnode1
+    51.161.199.191  devnode2
     51.161.162.49   rocketry
   '';
 }
