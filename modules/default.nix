@@ -128,6 +128,7 @@
 		unzip
 		man-pages
 		powertop
+    ffmpeg
 	
 		traceroute
 		netperf
