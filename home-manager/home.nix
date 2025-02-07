@@ -26,6 +26,8 @@
     ./modules/starship.nix
     ./modules/k8s/k8s.nix
     ./modules/zsh.nix
+
+    ./modules/email.nix
   ];
     
   nixpkgs.config.allowUnfree = true;
