@@ -6,6 +6,27 @@
       address = "webmaster@oxn.sh";
       userName = "webmaster@oxn.sh";
       realName = "Webmaster";
+      primary = false;
+
+      imap = {
+        host = "imap.purelymail.com";
+        port = 993;
+        tls.enable = true;
+      };
+
+      smtp = {
+        host = "smtp.purelymail.com";
+        port = 465;
+        tls.enable = true;
+      };
+
+      thunderbird.enable = true;
+    };
+
+    ethonium = {
+      address = "escott@ethonium.com";
+      userName = "escott@ethonium.com";
+      realName = "Ethonium";
       primary = true;
 
       imap = {
@@ -20,9 +41,7 @@
         tls.enable = true;
       };
 
-      thunderbird = {
-        enable = true;
-      };
+      thunderbird.enable = true;
     };
 
     unsw = {
