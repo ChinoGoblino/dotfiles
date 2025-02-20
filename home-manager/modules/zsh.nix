@@ -20,7 +20,9 @@
       # TODO REMOVE:
       mipsy = "~/mipsy/target/debug/mipsy";
       sshcse = "ssh z5588665@login.cse.unsw.edu.au";
+      sshcsepg = "ssh z5588665@vxdb02.cse.unsw.edu.au";
       tastytrade = "/etc/nixos/result/bin/tastytrade";
+      code = "FLATPAK_ENABLE_SDK_EXT=openjdk8 flatpak run com.visualstudio.code";
     };
     initExtra = ''
       # Case Insensitive autocomplete

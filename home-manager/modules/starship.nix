@@ -26,6 +26,9 @@
         cmd_duration = {
           disabled = true;
         };
+        gradle = {
+          disabled = true;
+        };
         kubernetes = {
           disabled = false;
           format = "[$symbol\(in $namespace \)]($style)";

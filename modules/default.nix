@@ -149,18 +149,24 @@
     nmap
 
 		clang
-		cargo
+    rustup
 		gnumake
 		python3
+    pyright
+    docker-compose
+    gradle_8
+    host-spawn #use terminal in vscode
   ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk17;
+  };
 
   fonts.packages = with pkgs; [
 		font-awesome
 		fira-code
   ];
-
-	# kdeconnect
-	programs.kdeconnect.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -188,10 +194,6 @@
       default_session = initial_session;
 		};
   };
-
-	# Unlock keyring
-  security.pam.services.greetd.enableGnomeKeyring = true;
-	services.gnome.gnome-keyring.enable = true;
 
   # Podman as drop in replacement for docker
   virtualisation.containers.enable = true;

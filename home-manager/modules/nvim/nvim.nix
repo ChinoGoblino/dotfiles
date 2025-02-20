@@ -12,8 +12,18 @@ in {
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
       {
+        plugin = nvim-lspconfig;
+        config = toLuaFile ./lspconfig.lua;
+      }
+      # Catppuccin theme
+      {
         plugin = catppuccin-nvim;
         config = "colorscheme catppuccin-macchiato";
+      }
+      # Autocomplete
+      {
+        plugin = nvim-cmp;
+        config = toLuaFile ./cmp.lua;
       }
       # Pretty bottom status bar
       {
@@ -37,12 +47,14 @@ in {
           yaml
           go
           comment
+          java
+          rust
+          python
         ]);
         config = toLuaFile ./treesitter.lua;
       }
     ];
     extraLuaConfig = ''
-      ${builtins.readFile ./init.lua}
       ${builtins.readFile ./options.lua}
     '';
 	};

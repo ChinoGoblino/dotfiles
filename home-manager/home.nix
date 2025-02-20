@@ -51,6 +51,7 @@
     signal-desktop
 		obsidian #unfree
 		vesktop #unfree-backend
+    teams-for-linux #unfree
 		element-desktop
 		gimp
     sdrangel

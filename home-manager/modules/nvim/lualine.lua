@@ -11,6 +11,8 @@
 -- Reformatted sections
 -- -------------------------
 
+require('lualine')
+
 -- stylua: ignore
     local colors = {
       bg = '#1f1f28',           -- sumiInk
