@@ -153,6 +153,7 @@
 		gnumake
 		python3
     pyright
+    nil
     docker-compose
     gradle_8
     host-spawn #use terminal in vscode

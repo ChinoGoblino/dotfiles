@@ -13,3 +13,8 @@ lspconfig.rust_analyzer.setup{
 lspconfig.pyright.setup{
   settings = {}
 }
+
+-- Nix
+lspconfig.nil_ls.setup{
+  settings = {}
+}
