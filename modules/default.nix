@@ -148,15 +148,22 @@
     xh
     nmap
 
+    host-spawn #use terminal in vscode with flatpak
+    # C
 		clang
-    rustup
 		gnumake
+    # Rust
+    rustup
+    cargo-workspaces
+    # Python
 		python3
     pyright
+    # Nix
     nil
+    # Docker
     docker-compose
+    # Java
     gradle_8
-    host-spawn #use terminal in vscode
   ];
 
   programs.java = {

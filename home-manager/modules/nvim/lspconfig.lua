@@ -2,6 +2,9 @@
 
 local lspconfig = require('lspconfig')
 
+-- Always show sign column to prevent shifting
+vim.o.signcolumn = "yes"
+
 -- Rust
 lspconfig.rust_analyzer.setup{
   settings = {
