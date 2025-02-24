@@ -98,6 +98,9 @@
       # Check about:config for options
       Preferences = {
           "browser.startup.page" = 3;   # Save tabs on startup
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp" = true;
+          "sidebar.main.tools" = "aichat,history";
       };
 
       # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265

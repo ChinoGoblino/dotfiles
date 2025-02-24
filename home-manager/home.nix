@@ -49,6 +49,7 @@
 		libreoffice
 		nemo
     signal-desktop
+    scli
 		obsidian #unfree
 		vesktop #unfree-backend
     teams-for-linux #unfree
@@ -58,10 +59,21 @@
 		pwvucontrol
     termshark
 		thunderbird
+    tigervnc # TODO: Remove
     
     tradingview
     prismlauncher
 	];
+
+  programs.mise = {
+    enable = true;
+    globalConfig = {
+      tools = {
+      #  java = "openjdk-17";
+        gradle = "8.8";
+      };
+    };
+  };
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
