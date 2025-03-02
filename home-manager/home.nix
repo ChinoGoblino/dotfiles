@@ -40,8 +40,8 @@
 		swaylock
 		swww
 
-		htop
 		neofetch
+    btop
 
 		ferdium
     mpv
