@@ -153,7 +153,9 @@
 		clang
 		gnumake
     # Rust
-    rustup
+    cargo
+    rustc
+    rust-analyzer
     cargo-workspaces
     # Python
 		python3
