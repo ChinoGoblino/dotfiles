@@ -49,17 +49,14 @@
 		libreoffice
 		nemo
     signal-desktop
-    scli
 		obsidian #unfree
 		vesktop #unfree-backend
-    teams-for-linux #unfree
 		element-desktop
 		gimp
     sdrangel
 		pwvucontrol
     termshark
 		thunderbird
-    tigervnc # TODO: Remove
     
     tradingview
     prismlauncher

@@ -31,6 +31,17 @@
             definedAliases = [ "@np" ];
           };
 
+          "Rust Docs" = {
+            urls = [{
+              template = "https://docs.rs/releases/search";
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+
+            definedAliases = [ "@rp" ];
+          };
+
           "NixOS Wiki" = {
             urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
 
