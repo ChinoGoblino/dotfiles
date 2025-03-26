@@ -10,7 +10,7 @@
 
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake /etc/nixos";
-      k = "kubectl";
+      k = "kubecolor";
       kns = "kubens";
       ktx = "kubectx";
       nix-shell = "nix-shell --command zsh";
@@ -26,6 +26,8 @@
     };
     initExtra = ''
       # Case Insensitive autocomplete
+      compdef kubecolor=kubectl
+
       autoload -Uz compinit && compinit
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' menu select

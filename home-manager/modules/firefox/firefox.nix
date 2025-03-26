@@ -10,12 +10,17 @@
 
       search = {
         force = true;
-        default = "Startpage";
-        order = [ "Startpage" ];
+        default = "Kagi";
+        order = [ "Kagi" "Startpage" ];
         engines = {
           "Startpage" = {
             urls = [{ template = "https://www.startpage.com/sp/search?q={searchTerms}"; }];
             definedAliases = [ "@s" ];
+          };  
+
+          "Kagi" = {
+            urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
+            definedAliases = [ "@k" ];
           };  
 
           "Nix Packages" = {

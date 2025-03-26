@@ -11,6 +11,7 @@ in {
     vimAlias = true;
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
+      # LSP
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ./lspconfig.lua;
@@ -19,6 +20,10 @@ in {
       {
         plugin = catppuccin-nvim;
         config = "colorscheme catppuccin-macchiato";
+      }
+      # LSP Completions
+      {
+        plugin = cmp-nvim-lsp;
       }
       # Autocomplete
       {
