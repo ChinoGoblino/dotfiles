@@ -148,6 +148,8 @@
     xh
     nmap
 
+    sshfs # TODO: Remove
+
     host-spawn #use terminal in vscode with flatpak
     # C
 		clang

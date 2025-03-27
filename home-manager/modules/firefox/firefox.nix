@@ -10,15 +10,15 @@
 
       search = {
         force = true;
-        default = "Kagi";
-        order = [ "Kagi" "Startpage" ];
+        default = "startpage";
+        order = [ "kagi" "startpage" ];
         engines = {
-          "Startpage" = {
+          "startpage" = {
             urls = [{ template = "https://www.startpage.com/sp/search?q={searchTerms}"; }];
             definedAliases = [ "@s" ];
           };  
 
-          "Kagi" = {
+          "kagi" = {
             urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
             definedAliases = [ "@k" ];
           };  
@@ -64,16 +64,9 @@
         ublock-origin
         vimium
         simplelogin
-        leechblock-ng
         nighttab
       ];
 
-      # TODO: Make more elegant
- #     extensions = with pkgs.inputs.firefox-addons; [
- #       bitwarden
- #       ublock-origin
- #       vimium
- #     ];
     };
 
     # Check about:policies for options

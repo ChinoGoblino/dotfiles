@@ -21,6 +21,8 @@
       mipsy = "~/mipsy/target/debug/mipsy";
       sshcse = "ssh z5588665@login.cse.unsw.edu.au";
       sshcsepg = "ssh z5588665@vxdb02.cse.unsw.edu.au";
+      sshcsefs = "sshfs -o idmap=user -C z5588665@login5.cse.unsw.edu.au: ~/unsw/cse";
+      sshcseufs = "fusermount -zu ~/unsw/cse";
       tastytrade = "/etc/nixos/result/bin/tastytrade";
       code = "FLATPAK_ENABLE_SDK_EXT=openjdk8 flatpak run com.visualstudio.code";
     };

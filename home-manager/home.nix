@@ -28,6 +28,7 @@
     ./modules/zsh.nix
 
     ./modules/email.nix
+    ./modules/zed.nix
   ];
     
   nixpkgs.config.allowUnfree = true;
