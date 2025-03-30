@@ -17,3 +17,8 @@ local lspconfig = require('lspconfig')
 lspconfig.rust_analyzer.setup {
   capabilities = lsp_capabilities
 }
+
+-- Add Python LSP (pyright)
+lspconfig.pyright.setup {
+  capabilities = lsp_capabilities
+}

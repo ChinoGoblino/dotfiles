@@ -58,6 +58,7 @@
 		pwvucontrol
     termshark
 		thunderbird
+    feishin
     
     tradingview
     prismlauncher

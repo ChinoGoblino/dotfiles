@@ -15,12 +15,12 @@ require('lualine')
 
 -- stylua: ignore
     local colors = {
-      bg = '#1f1f28',           -- sumiInk
-      fg = '#dcd7ba',           -- foam
-      blue = '#7fb4ca',         -- springBlue
-      darkblue = '#223249',     -- waveBlue
-      yellow = '#e0af68',       -- springYellow
-      pink = '#d27e99',         -- sakuraPink
+      bg = '#24273A',       -- Base
+      fg = '#CAD3F5',       -- Text
+      blue = '#8AADF4',     -- Blue
+      darkblue = '#5B6078', -- Subtext
+      yellow = '#EED49F',   -- Yellow
+      pink = '#F5BDE6',     -- Pink
       transparentbg = nil,
     }
 
