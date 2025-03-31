@@ -11,6 +11,7 @@
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake /etc/nixos";
       k = "kubecolor";
+      kak = "k apply -k .";
       kns = "kubens";
       ktx = "kubectx";
       nix-shell = "nix-shell --command zsh";
@@ -27,9 +28,6 @@
       code = "FLATPAK_ENABLE_SDK_EXT=openjdk8 flatpak run com.visualstudio.code";
     };
     initExtra = ''
-      # Case Insensitive autocomplete
-      compdef kubecolor=kubectl
-
       autoload -Uz compinit && compinit
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' menu select
@@ -48,6 +46,11 @@
 
       # Enable shell integration for mise
       eval "$(mise activate zsh)"
+
+      # Case Insensitive autocomplete
+      source <(kubectl completion zsh)
+      compdef kubecolor=kubectl
+
     '';
   };
 }
