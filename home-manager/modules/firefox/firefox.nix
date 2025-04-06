@@ -110,6 +110,7 @@
           "sidebar.verticalTabs" = true;
           "sidebar.revamp" = true;
           "sidebar.main.tools" = "aichat,history";
+          "browser.tabs.groups.enabled" = true;
       };
 
       # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
