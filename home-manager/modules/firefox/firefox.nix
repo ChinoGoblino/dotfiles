@@ -111,6 +111,7 @@
           "sidebar.revamp" = true;
           "sidebar.main.tools" = "aichat,history";
           "browser.tabs.groups.enabled" = true;
+          "browser.fullscreen.autohide" = false;
       };
 
       # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
@@ -120,8 +121,6 @@
           installation_mode = "force_installed";
         };
       };
-
-      userChrome = (builtins.readFile ./userChrome.css);
     };
   };
 }
