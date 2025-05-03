@@ -59,6 +59,7 @@
     termshark
 		thunderbird
     feishin
+    localsend
     
     tradingview
     prismlauncher

@@ -9,7 +9,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /etc/nixos";
+      u = "sudo nixos-rebuild switch --flake /etc/nixos";
+      fu = "sudo nix flake update /etc/nixos";
       k = "kubecolor";
       kak = "k apply -k .";
       kns = "kubens";

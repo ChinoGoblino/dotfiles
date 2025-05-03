@@ -204,14 +204,18 @@
       default_session = initial_session;
 		};
   };
+  
 
   # Podman as drop in replacement for docker
   virtualisation.containers.enable = true;
   virtualisation = {
-    podman = {
+   # podman = {
+   #   enable = true;
+   #   # 'docker' alias for podman
+   #   dockerCompat = true;
+   # };
+    docker = {
       enable = true;
-      # 'docker' alias for podman
-      dockerCompat = true;
     };
   };
 }
