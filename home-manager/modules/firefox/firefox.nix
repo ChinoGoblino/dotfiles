@@ -10,7 +10,7 @@
 
       search = {
         force = true;
-        default = "startpage";
+        default = "google";
         order = [ "kagi" "startpage" ];
         engines = {
           "startpage" = {
@@ -120,6 +120,8 @@
           installation_mode = "force_installed";
         };
       };
+
+      userChrome = (builtins.readFile ./userChrome.css);
     };
   };
 }

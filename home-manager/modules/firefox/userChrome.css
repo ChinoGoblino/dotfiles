@@ -1,0 +1,4 @@
+  /* Hide window control buttons (close, minimize, maximize) */
+  .titlebar-buttonbox-container {
+    display: none !important;
+  }
