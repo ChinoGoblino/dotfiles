@@ -13,6 +13,10 @@
 				layout = "dwindle";
 			};
 
+      debug = {
+        disable_scale_checks = true;
+      };
+
 			dwindle = {
 				force_split = 2;
 				permanent_direction_override = true;

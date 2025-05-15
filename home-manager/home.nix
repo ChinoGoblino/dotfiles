@@ -53,16 +53,16 @@
 		obsidian #unfree
 		vesktop #unfree-backend
 		element-desktop
-		gimp
-    sdrangel
+		gimp3
+    #sdrangel
 		pwvucontrol
     termshark
 		thunderbird
-    feishin
     localsend
     
     tradingview
     prismlauncher
+    legcord
 	];
 
   programs.mise = {
