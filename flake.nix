@@ -35,7 +35,7 @@
           ./hosts/gabriel/configuration.nix
           ./modules
 
-					home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.chino = {
               imports = [
@@ -54,7 +54,7 @@
         modules = [
           ./hosts/michael/configuration.nix
           ./modules
-					home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.chino = {
               imports = [

@@ -1,8 +1,8 @@
 { pkgs, config, inputs, ... }:
 
 {
-	programs.firefox = {	
-		enable = true;
+  programs.firefox = {  
+    enable = true;
 
     profiles.me = {
       name = "me";

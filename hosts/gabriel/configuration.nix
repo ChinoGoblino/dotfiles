@@ -10,18 +10,18 @@
       ./hardware-configuration.nix
     ];
 
-	networking.hostName = "gabriel"; # Define your hostname.
+  networking.hostName = "gabriel"; # Define your hostname.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   environment.systemPackages = with pkgs; [
-		brightnessctl
-		kicad
+    brightnessctl
+    kicad
   ];
 
-	powerManagement.enable = true;
+  powerManagement.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

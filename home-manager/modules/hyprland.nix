@@ -1,32 +1,32 @@
  { config, pkgs, lib, ... }:
 
 {
-	wayland.windowManager.hyprland = {
-		enable = true;
-		systemd.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = true;
     settings = {
       "$mod" = "SUPER";
 
-			general = {
-				gaps_in = 0;
-				gaps_out = 0;
-				layout = "dwindle";
-			};
+      general = {
+        gaps_in = 0;
+        gaps_out = 0;
+        layout = "dwindle";
+      };
 
       debug = {
         disable_scale_checks = true;
       };
 
-			dwindle = {
-				force_split = 2;
-				permanent_direction_override = true;
-				use_active_for_splits = false;
-			};
+      dwindle = {
+        force_split = 2;
+        permanent_direction_override = true;
+        use_active_for_splits = false;
+      };
 
-			# Prevent blur on xwayland
-			xwayland = {
-				force_zero_scaling = true;
-			};
+      # Prevent blur on xwayland
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
       bind = [
         "$mod, Q, killactive"
@@ -101,14 +101,14 @@
         "${pkgs.syncthingtray}/bin/syncthingtray --wait"
       ];
 
-			# Move/resize windows with mod + LMB/RMB and dragging
+      # Move/resize windows with mod + LMB/RMB and dragging
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
 
-			# Remove border if only one application in a workspace
-			windowrulev2 = "noborder, onworkspace:w[t1]";
+      # Remove border if only one application in a workspace
+      windowrulev2 = "noborder, onworkspace:w[t1]";
     };
-	};
+  };
 }

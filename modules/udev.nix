@@ -4,18 +4,18 @@
     rtl-sdr
   ];
 
-	# udev rules
-	services.udev.packages = [
-		(pkgs.writeTextFile {
-			name = "stm32_udev";
-			text = ''
+  # udev rules
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "stm32_udev";
+      text = ''
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", GROUP="users", MODE="0666"
-			'';
-			destination = "/etc/udev/rules.d/50-stm32.rules";
-		})
-		(pkgs.writeTextFile {
-			name = "hackrf_udev";
-			text = ''
+      '';
+      destination = "/etc/udev/rules.d/50-stm32.rules";
+    })
+    (pkgs.writeTextFile {
+      name = "hackrf_udev";
+      text = ''
 # HackRF Jawbreaker
 ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", MODE="666", GROUP="plugdev"
 # HackRF One
@@ -29,9 +29,9 @@ KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}==
 # rad1o flash disk
 KERNEL=="sd?", SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="1fc9", ENV{ID_MODEL_ID}=="0082", SYMLINK+="rad1o-msc-%k", MODE="666", GROUP="plugdev"
 #
-			'';
-			destination = "/etc/udev/rules.d/53-hackrf.rules";
-		})
+      '';
+      destination = "/etc/udev/rules.d/53-hackrf.rules";
+    })
     (pkgs.writeTextFile {
       name = "rtl-sdr";
       text = ''
@@ -163,7 +163,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="1f4d", ATTRS{idProduct}=="d803", MODE:="066
       '';
       destination = "/etc/udev/rules.d/10-rtl-sdr.rules";
     })
-	];
+  ];
 
   boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" ];
 }

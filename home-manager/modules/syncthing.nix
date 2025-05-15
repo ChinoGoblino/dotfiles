@@ -2,7 +2,7 @@
 
 {
   services.syncthing = {
-		enable = true;
+    enable = true;
     settings = {
       devices = {
         "raphael" = { id = "Z2CU7Q6-PSHUE4T-LVRDYH4-KDADA43-TIGQ6QJ-LGX36Q3-EUML2MI-3GQ35AD"; };
