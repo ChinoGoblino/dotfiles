@@ -2,9 +2,9 @@
 
 {
   home.packages = with pkgs; [
-		kubectl
-		kubectx
-		colmena
+    kubectl
+    kubectx
+    colmena
     spotdl
     kustomize
     helmfile
@@ -17,7 +17,7 @@
         helm-git
       ];
     }) 
-	];
+  ];
 
   imports = [
     ./k9s.nix

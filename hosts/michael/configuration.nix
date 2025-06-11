@@ -33,10 +33,10 @@
     steam
   ];
 
-	fileSystems."/mnt/games" = { 
-			device = "/dev/disk/by-uuid/956c562f-aa38-4fa3-b042-020552d5bbd6";
-			fsType = "ext4";
-	};
+  fileSystems."/mnt/games" = { 
+      device = "/dev/disk/by-uuid/956c562f-aa38-4fa3-b042-020552d5bbd6";
+      fsType = "ext4";
+  };
 
   # Steam requires 32 bit
   hardware.graphics.enable32Bit = true;
