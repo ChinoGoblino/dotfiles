@@ -18,18 +18,6 @@
     };
   };
 
-  fileSystems."/media/music" = {
-    device = "exodus:/volumes/media/music/music";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-  };
-
-  fileSystems."/media/drive" = {
-    device = "exodus:/volumes/payload/backups";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-  };
-
   imports = [
     ./udev.nix
     ./hosts.nix
@@ -141,6 +129,7 @@
     man-pages
     powertop
     ffmpeg
+    openssl
     qmk
 
     traceroute
