@@ -12,6 +12,19 @@
 
   networking.hostName = "michael";
 
+  fileSystems."/media/music" = {
+    device = "exodus:/volumes/media/music/music";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
+  fileSystems."/media/drive" = {
+    device = "exodus:/volumes/payload/backups";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

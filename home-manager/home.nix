@@ -54,11 +54,10 @@
 		vesktop #unfree-backend
 		element-desktop
 		gimp
-    sdrangel
+    #sdrangel
 		pwvucontrol
     termshark
 		thunderbird
-    feishin
     localsend
     
     tradingview

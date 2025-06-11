@@ -28,7 +28,7 @@
       tastytrade = "/etc/nixos/result/bin/tastytrade";
       code = "FLATPAK_ENABLE_SDK_EXT=openjdk8 flatpak run com.visualstudio.code";
     };
-    initExtra = ''
+    initContent = ''
       autoload -Uz compinit && compinit
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' menu select
