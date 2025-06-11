@@ -62,7 +62,6 @@
     
     tradingview
     prismlauncher
-    legcord
   ];
 
   programs.mise = {
