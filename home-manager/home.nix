@@ -59,6 +59,7 @@
     termshark
     thunderbird
     localsend
+    tor-browser
     
     tradingview
     prismlauncher

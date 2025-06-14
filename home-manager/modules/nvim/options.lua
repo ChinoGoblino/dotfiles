@@ -24,3 +24,12 @@ vim.cmd([[
 		autocmd FileType lua setlocal ts=2 sw=2 sts=2
 	augroup END
 ]])
+
+-- Enable spellcheck for text and markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "en_us" }
+  end,
+})
