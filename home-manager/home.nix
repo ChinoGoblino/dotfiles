@@ -43,6 +43,7 @@
 
     neofetch
     btop
+    bat
 
     ferdium
     mpv

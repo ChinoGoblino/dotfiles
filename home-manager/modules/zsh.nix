@@ -11,13 +11,16 @@
     shellAliases = {
       u = "sudo nixos-rebuild switch --flake /etc/nixos";
       fu = "sudo nix flake update /etc/nixos";
+
       k = "kubecolor";
       kak = "k apply -k .";
       kns = "kubens";
       ktx = "kubectx";
+
       nix-shell = "nix-shell --command zsh";
       ssh = "kitten ssh";
       wireshark = "sudo termshark";
+      cat = "bat";
 
       # TODO REMOVE:
       mipsy = "~/mipsy/target/debug/mipsy";
