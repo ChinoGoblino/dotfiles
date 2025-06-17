@@ -33,6 +33,15 @@ require('lualine')
       end,
     }
 
+    -- Word count component
+    local function word_count()
+      if vim.bo.filetype ~= "markdown" and vim.bo.filetype ~= "text" then
+        return ""
+      end
+      local wc = vim.fn.wordcount()
+      return wc.words
+    end
+
     local config = {
       options = {
         component_separators = "",
@@ -94,6 +103,10 @@ require('lualine')
     }
 
     ins_left { 'location' }
+
+    ins_left {
+      word_count,
+    }
 
     ins_left {
       'filename',

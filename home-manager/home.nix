@@ -60,10 +60,10 @@
     termshark
     thunderbird
     localsend
+    tor-browser
     
     tradingview
     prismlauncher
-    legcord
   ];
 
   programs.mise = {
