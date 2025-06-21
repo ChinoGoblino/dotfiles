@@ -61,6 +61,8 @@
 
   services.tailscale.enable = true;
 
+  services.mullvad-vpn.enable = true;
+
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["chino"];
   virtualisation.libvirtd.enable = true;
@@ -142,8 +144,8 @@
 
     host-spawn #use terminal in vscode with flatpak
     # C
-    clang
     gnumake
+    #clang-tools
     # Rust
     cargo
     rustc

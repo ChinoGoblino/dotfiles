@@ -18,7 +18,7 @@
   imports = [
     ./modules/syncthing.nix
     ./modules/waybar.nix
-    ./modules/hyprland.nix
+    ./modules/hyprland/hyprland.nix
     ./modules/dunst.nix
 
     ./modules/nvim/nvim.nix
@@ -65,15 +65,6 @@
     prismlauncher
   ];
 
-  programs.mise = {
-    enable = true;
-    globalConfig = {
-      tools = {
-      #  java = "openjdk-17";
-        gradle = "8.8";
-      };
-    };
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -1,6 +1,8 @@
  { config, pkgs, lib, ... }:
 
 {
+  home.file.".config/hypr/shaders/crt.frag".text = builtins.readFile ./shaders/crt.frag;
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -35,6 +37,8 @@
         "$mod, R, exec, ${pkgs.tofi}/bin/tofi-drun --drun-launch=true"
         "$mod, T, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"
         "$mod, F, fullscreen"
+        "$mod CTRL, S, exec, hyprctl keyword decoration:screen_shader ~/.config/hypr/shaders/crt.frag"
+        "$mod CTRL_SHIFT, S, exec, hyprctl keyword decoration:screen_shader \"[[EMPTY]]\""
 
         # Switch focus
         "$mod, H, movefocus, l"
